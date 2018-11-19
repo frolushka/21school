@@ -32,17 +32,9 @@ int		ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void	ft_swap(char *str1, char *str2)
-{
-	char	**temp;
-
-	*temp = str1;
-	str1 = str2;
-	str2 = *temp;
-}
-
 int		main(int argc, char **argv)
 {	
+	char	*temp;
 	int	i;
 	int	j;
 
@@ -52,11 +44,18 @@ int		main(int argc, char **argv)
 		j = i;
 		while (++j < argc)
 		{
-			if (ft_strcmp(argv[i], argv[j]))
-				ft_swap(argv[i], argv[j]);
+			if (ft_strcmp(argv[i], argv[j]) > 0)
+			{
+				temp = argv[i];
+				argv[i] = argv[j];
+				argv[j] = temp;
+			}
 		}
 	}
 	while (*(++argv))
+	{
 		ft_putstr(*argv);
+		ft_putchar('\n');
+	}
 	return (0);
 }

@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 13:22:58 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/20 12:05:00 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/20 12:04:27 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/20 12:14:16 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include <stdlib.h>
 
-void	ft_print_alphabet(void)
+int		ft_strlen(char *str)
 {
-	char	c;
+	int res;
 
-	c = 'a';
-	while (c <= 'z')
-		ft_putchar(c++);
+	res = 0;
+	while (*str++)
+		res++;
+	return (res);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*res;
+	int		i;
+
+	if (!src || !(res = (char *) malloc(ft_strlen(src))))
+		return (0);
+	while (*src)
+	{
+		*res = *src++;
+		res++;
+	}
+	return (res);
+}
+
+int main(void)
+{
+	return (0);
 }

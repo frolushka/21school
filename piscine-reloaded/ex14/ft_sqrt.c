@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 14:07:48 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/19 14:10:00 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/20 12:05:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ int	ft_sqrt(int nb)
 		res++;
 	if (res * res == nb)
 		return (res);
-	else
-		return (0);
+	return (0);
 }

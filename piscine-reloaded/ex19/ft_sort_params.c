@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 14:25:29 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/19 14:54:20 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/20 12:06:17 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_strcmp(char *s1, char *s2)
 }
 
 int		main(int argc, char **argv)
-{	
+{
 	char	*temp;
 	int	i;
 	int	j;

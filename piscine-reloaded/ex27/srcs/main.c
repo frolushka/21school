@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 14:18:11 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/20 16:16:55 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/20 16:48:58 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/20 16:53:40 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include "ft_util.h"
+
+int	main(int argc, char **argv)
 {
-	while (*s1 && *s2)
+	int	file;
+
+	if (argc == 2)
 	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
+		file = open(argv[1], O_RDONLY);
+		if (file == -1)
+			return (0);
+		ft_display_file(file);
+		close(file);
 	}
-	return (*s1 - *s2);
+	return (0);
 }

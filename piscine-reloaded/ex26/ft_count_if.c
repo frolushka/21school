@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 14:18:11 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/20 16:16:55 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/20 15:50:42 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/20 16:29:24 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_count_if(char **tab, int (*f)(char *))
 {
-	while (*s1 && *s2)
+	int res;
+
+	res = 0;
+	if (!tab)
 	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
+		while (*tab)
+		{
+			if (f(*tab))
+				res++;
+		}
 	}
-	return (*s1 - *s2);
+	return (res);
 }

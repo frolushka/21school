@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:04:27 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/20 12:14:16 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/20 16:27:09 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strdup(char *src)
 	char	*res;
 	int		i;
 
-	if (!src || !(res = (char *) malloc(ft_strlen(src))))
+	if (!src || !(res = (char *)malloc(ft_strlen(src))))
 		return (0);
 	while (*src)
 	{
@@ -35,9 +35,4 @@ char	*ft_strdup(char *src)
 		res++;
 	}
 	return (res);
-}
-
-int main(void)
-{
-	return (0);
 }

@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 14:18:11 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/20 16:16:55 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/20 15:47:46 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/20 16:27:45 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
-	while (*s1 && *s2)
+	int	i;
+
+	i = 0;
+	if (!tab)
 	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
+		while (i < length)
+			f(tab[i]++);
 	}
-	return (*s1 - *s2);
 }

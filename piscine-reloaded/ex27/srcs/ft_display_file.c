@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_display_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 14:18:11 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/20 16:16:55 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/20 16:53:48 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/20 16:57:32 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include "ft_util.h"
+
+void	ft_display_file(int file)
 {
-	while (*s1 && *s2)
+	char	buffer[BUFF_SIZE + 1];
+	int		i;
+
+	while (read(file, buffer, BUFF_SIZE))
 	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
+		i = 0;
+		while (buffer[i])
+			write(1, &buffer[i++], 1);
 	}
-	return (*s1 - *s2);
 }

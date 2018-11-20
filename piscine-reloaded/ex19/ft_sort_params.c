@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 14:25:29 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/20 12:06:17 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/20 16:29:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,14 @@ int		ft_strcmp(char *s1, char *s2)
 		if (*s1 != *s2)
 			return (*s1 - *s2);
 	}
-	if (*s1)
-		return (*s1);
-	if (*s2)
-		return (*s2);
-	return (0);
+	return (*s1 - *s2);
 }
 
 int		main(int argc, char **argv)
 {
 	char	*temp;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (++i < argc - 1)

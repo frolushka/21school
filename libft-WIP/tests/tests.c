@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 21:57:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 00:05:20 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/23 00:21:00 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ void	ft_assert_int(int a, int b, int *passed, int *failed)
 		*failed += 1;
 	else
 		*passed += 1;
-	printf("%d: %s\t", *passed + *failed, temp != *passed ? "OK" : "FAIL");
+	printf("%s%d: %s", temp != *passed ? "" : "\n", *passed + *failed, temp != *passed ? "OK; " : "FAIL\t");
 	if (temp != *passed)
-	{
-		printf("\n");
 		return;
-	}
 	printf("assert %d == %d\n", a, b);
 }
 
@@ -34,13 +31,13 @@ void	ft_assert_str(char *a, char *b, int *passed, int *failed)
 	if (a == NULL && b == NULL)
 	{
 		*passed += 1;
-		printf("%d: %s\n", *passed + *failed, "OK");
+		printf("%d: %s", *passed + *failed, "OK; ");
 		return;
 	}
 	if (a == NULL || b == NULL)
 	{
 		*failed += 1;
-		printf("%d: %s\t", *passed + *failed, "FAIL");
+		printf("\n%d: %s", *passed + *failed, "FAIL\t");
 		goto FAIL;
 	}
 	int temp = *passed;
@@ -50,7 +47,7 @@ void	ft_assert_str(char *a, char *b, int *passed, int *failed)
 		if (a[i] != b[i])
 		{
 			*failed += 1;
-			printf("%d: %s\t", *passed + *failed, "FAIL");
+			printf("%d: %s", *passed + *failed, "FAIL\t");
 			goto FAIL;
 		}
 		i++;
@@ -59,12 +56,9 @@ void	ft_assert_str(char *a, char *b, int *passed, int *failed)
 		*failed += 1;
 	else
 		*passed += 1;
-	printf("%d: %s\t", *passed + *failed, temp != *passed ? "OK" : "FAIL");
+	printf("%s%d: %s", temp != *passed ? "" : "\n", *passed + *failed, temp != *passed ? "OK; " : "FAIL\t");
 	if (temp != *passed)
-	{
-		printf("\n");
 		return;
-	}
 	FAIL:
 	printf("assert ");
 	i = 0;
@@ -75,8 +69,7 @@ void	ft_assert_str(char *a, char *b, int *passed, int *failed)
 	i = 0;
 	while (b[i])
 		printf("%d ", b[i++]);
-	printf("(%s)", b);
-	printf("\n");
+	printf("(%s)\n", b);
 }
 
 void	ft_assert_null(char *a, int *passed, int *failed)
@@ -86,11 +79,8 @@ void	ft_assert_null(char *a, int *passed, int *failed)
 		*failed += 1;
 	else
 		*passed += 1;
-	printf("%d: %s\t", *passed + *failed, temp != *passed ? "OK" : "FAIL");
+	printf("%s%d: %s", temp != *passed ? "" : "\n", *passed + *failed, temp != *passed ? "OK; " : "FAIL\t");
 	if (temp != *passed)
-	{
-		printf("\n");
 		return;
-	}
 	printf("assert %s == NULL\n", a == NULL ? "NULL" : "NOT NULL");
 }

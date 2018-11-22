@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 21:54:55 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 00:02:25 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/23 00:21:16 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_memset_test()
 	ft_assert_str(memset(s, 0, 4), ft_memset(s, 0, 4), &passed, &failed);
 	ft_assert_str(memset(s, 0, 6), ft_memset(s, 0, 6), &passed, &failed);
 	ft_assert_str(memset(s, -1, 124), ft_memset(s, -1, 124), &passed, &failed);
-	printf("--------------\nTOTAL: %d\nPASSED: %d\nFAILED: %d\n--------------\n",
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
 		passed + failed,
 		passed,
 		failed);
@@ -71,7 +71,7 @@ int	ft_bzero_test()
 	bzero(s1, 0);
 	ft_bzero(s2, 0);
 	ft_assert_str(s1, s2, &passed, &failed);
-	printf("--------------\nTOTAL: %d\nPASSED: %d\nFAILED: %d\n--------------\n",
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
 		passed + failed,
 		passed,
 		failed);
@@ -105,7 +105,7 @@ int ft_memcpy_test()
 	strcpy(dst1, "111111");
 	strcpy(dst2, "111111");
 	ft_assert_str(memcpy(dst1, src, 0), ft_memcpy(dst2, src, 0), &passed, &failed);
-	printf("--------------\nTOTAL: %d\nPASSED: %d\nFAILED: %d\n--------------\n",
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
 		passed + failed,
 		passed,
 		failed);
@@ -150,7 +150,7 @@ int ft_memccpy_test()
 	strcpy(dst2, "11a111");
 	ft_assert_str(memccpy(dst1, src, 'a', 5), ft_memccpy(dst2, src, 'a', 5), &passed, &failed);
 	ft_assert_str(dst1, dst2, &passed, &failed);
-	printf("--------------\nTOTAL: %d\nPASSED: %d\nFAILED: %d\n--------------\n",
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
 		passed + failed,
 		passed,
 		failed);

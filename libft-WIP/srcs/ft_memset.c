@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:58:02 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/22 23:37:11 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/23 00:24:35 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	*ft_memset(void *b, int c, size_t len)
 {
 	char	*p;
-	int		i;
+	size_t	i;
 
 	p = (char *)b;
 	i = 0;

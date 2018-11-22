@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 23:36:47 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 00:06:08 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/23 00:22:28 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void 	*ft_memccpy(void *dst, void const *src, int c, size_t n)
 {
 	char	*csrc;
 	char	*cdst;
-	int		i;
+	size_t	i;
 
 	csrc = (char *)src;
 	cdst = (char *)dst;

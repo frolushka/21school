@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 13:10:27 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/22 13:20:01 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/21 23:58:02 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/22 23:37:11 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-int	main(void)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*s = malloc(11);
+	char	*p;
+	int		i;
 
-	s = memset(s, 10, 14);
-	int i = -1;
-	while (++i < 11)
-		printf("%d ", s[i]);
-	return (0);
+	p = (char *)b;
+	i = 0;
+	while (i < len)
+		p[i++] = (unsigned char)c;
+	return ((void *)p);
 }

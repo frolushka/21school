@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 23:36:47 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 15:22:20 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 00:29:54 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/26 00:47:00 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, void const *src, int c, size_t n)
+char	*ft_strtrim(char const *s)
 {
-	unsigned char	*csrc;
-	unsigned char	*cdst;
-	size_t			i;
+	char	*res;
+	int		b;
+	int		e;
+	int		i;
 
-	csrc = (unsigned char *)src;
-	cdst = (unsigned char *)dst;
+	if (s == NULL)
+		return (NULL);
+	b = 0;
+	while (s[b] == ' ' || s[b] == '\t' || s[b] == '\n')
+		b++;
+	e = ft_strlen(s) - 1;
+	while (e >= b && (s[e] == ' ' || s[e] == '\t' || s[e] == '\n'))
+		e--;
+	if (!(res = (char *)malloc(e - b + 2)))
+		return (NULL);
 	i = 0;
-
-	while (i < n)
+	while (b <= e)
 	{
-		cdst[i] = csrc[i];
-		if (csrc[i] == (unsigned char)c)
-			return ((void *)(&cdst[i + 1]));
+		res[i] = s[b++];
 		i++;
 	}
-	return (NULL);
+	res[i] = '\0';
+	return (res);
 }

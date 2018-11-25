@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 23:36:47 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 15:22:20 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 15:58:54 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/25 16:05:31 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, void const *src, int c, size_t n)
+char	*ft_strrchr(char const *s, int c)
 {
-	unsigned char	*csrc;
-	unsigned char	*cdst;
-	size_t			i;
+	size_t	slen;
+	size_t	i;
+	char	*res;
 
-	csrc = (unsigned char *)src;
-	cdst = (unsigned char *)dst;
+	slen = ft_strlen(s);
 	i = 0;
-
-	while (i < n)
+	res = NULL;
+	while (i < slen)
 	{
-		cdst[i] = csrc[i];
-		if (csrc[i] == (unsigned char)c)
-			return ((void *)(&cdst[i + 1]));
+		if (s[i] == (char)c)
+			res = (char *)(&s[i]);
 		i++;
 	}
-	return (NULL);
+	if (i == slen && c == '\0')
+		res = (char *)(&s[i]);
+	return (res);
 }

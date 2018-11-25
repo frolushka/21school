@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 23:36:47 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 15:22:20 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 23:33:45 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/25 23:39:05 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, void const *src, int c, size_t n)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	unsigned char	*csrc;
-	unsigned char	*cdst;
-	size_t			i;
+	unsigned int	i;
 
-	csrc = (unsigned char *)src;
-	cdst = (unsigned char *)dst;
 	i = 0;
-
-	while (i < n)
-	{
-		cdst[i] = csrc[i];
-		if (csrc[i] == (unsigned char)c)
-			return ((void *)(&cdst[i + 1]));
-		i++;
-	}
-	return (NULL);
+	if (s1 == NULL && s2 == NULL)
+		return (1);
+	else if (s1 == NULL || s2 == NULL)
+		return (0);
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		++i;
+	return ((s1[i] == '\0' && s2[i] == '\0') ? 1 : 0);
 }

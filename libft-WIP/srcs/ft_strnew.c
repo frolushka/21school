@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 23:36:47 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 15:22:20 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/26 01:34:55 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, void const *src, int c, size_t n)
+char	*ft_strnew(size_t size)
 {
-	unsigned char	*csrc;
-	unsigned char	*cdst;
-	size_t			i;
+	char	*res;
+	size_t	i;
 
-	csrc = (unsigned char *)src;
-	cdst = (unsigned char *)dst;
+	if (!(res = (char *)malloc(size)))
+		return (NULL);
 	i = 0;
-
-	while (i < n)
-	{
-		cdst[i] = csrc[i];
-		if (csrc[i] == (unsigned char)c)
-			return ((void *)(&cdst[i + 1]));
-		i++;
-	}
-	return (NULL);
+	while (i < size)
+		res[i++] = '\0';
+	return (res);
 }

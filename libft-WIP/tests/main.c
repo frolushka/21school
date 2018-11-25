@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 21:54:55 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 00:21:16 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/23 15:13:01 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,130 @@ int ft_memccpy_test()
 	return (failed);
 }
 
+int ft_memchr_test()
+{
+	int passed;
+	int failed;
+
+	passed = 0;
+	failed = 0;
+	printf("TEST FT_MEMCHR\n==============\n");
+	char	src[8] = "ab\n\tcdef";
+	ft_assert_str(memchr(src, 'a', 5), ft_memchr(src, 'a', 5), &passed, &failed);
+	ft_assert_str(memchr(src, '\n', 5), ft_memchr(src, '\n', 5), &passed, &failed);
+	ft_assert_str(memchr(src, '\t', 5), ft_memchr(src, '\t', 5), &passed, &failed);
+	ft_assert_str(memchr(src, '\0', 5), ft_memchr(src, '\0', 5), &passed, &failed);
+	ft_assert_str(memchr(src, 'd', 2), ft_memchr(src, 'd', 2), &passed, &failed);
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
+		passed + failed,
+		passed,
+		failed);
+	return (failed);
+}
+
+int ft_memcmp_test()
+{
+	int passed;
+	int failed;
+
+	passed = 0;
+	failed = 0;
+	printf("TEST FT_MEMCMP\n==============\n");
+	char	s1[8] = "ab\n\tcdef";
+	char	s2[8] = "ab\n\tcdgf";
+	ft_assert_int(memcmp(s1, s2, 5), ft_memcmp(s1, s2, 5), &passed, &failed);
+	ft_assert_int(memcmp(s1, s2, 6), ft_memcmp(s1, s2, 6), &passed, &failed);
+	ft_assert_int(memcmp(s1, s2, 7), ft_memcmp(s1, s2, 7), &passed, &failed);
+	ft_assert_int(memcmp(s1, s2, 8), ft_memcmp(s1, s2, 8), &passed, &failed);
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
+		passed + failed,
+		passed,
+		failed);
+	return (failed);
+}
+
+int ft_strlen_test()
+{
+	int passed;
+	int failed;
+
+	passed = 0;
+	failed = 0;
+	printf("TEST FT_STRLEN\n==============\n");
+	char	s1[8] = "ab\n\tcdef";
+	ft_assert_int(strlen(s1), ft_strlen(s1), &passed, &failed);
+	char	s2[8] = "ab\0\tcdef";
+	ft_assert_int(strlen(s2), ft_strlen(s2), &passed, &failed);
+	char	s3[0] = "";
+	ft_assert_int(strlen(s3), ft_strlen(s3), &passed, &failed);
+	char	s4[13] = "ab\n\t     cdef";
+	ft_assert_int(strlen(s4), ft_strlen(s4), &passed, &failed);
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
+		passed + failed,
+		passed,
+		failed);
+	return (failed);
+}
+
+int ft_strdup_test()
+{
+	int passed;
+	int failed;
+
+	passed = 0;
+	failed = 0;
+	printf("TEST FT_STRDUP\n==============\n");
+	char	s1[8] = "ab\n\tcdef";
+	ft_assert_str(strdup(s1), ft_strdup(s1), &passed, &failed);
+	char	s2[0] = "";
+	ft_assert_str(strdup(s2), ft_strdup(s2), &passed, &failed);
+	char	s3[8] = "faf\0fafs";
+	ft_assert_str(strdup(s3), ft_strdup(s3), &passed, &failed);
+	char	s4[8] = "";
+	ft_assert_str(strdup(s4), ft_strdup(s4), &passed, &failed);
+	char	s5[4] = " \t\n\r";
+	ft_assert_str(strdup(s5), ft_strdup(s5), &passed, &failed);
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
+		passed + failed,
+		passed,
+		failed);
+	return (failed);
+}
+
+int ft_stpcpy_test()
+{
+	int passed;
+	int failed;
+
+	passed = 0;
+	failed = 0;
+	printf("TEST FT_STPCPY\n==============\n");
+	char	s1[8] = "ab\n\tcdef";
+	char 	*dst = (char *)malloc(8);
+	ft_assert_str(stpcpy(dst, s1), ft_stpcpy(dst, s1), &passed, &failed);
+	free(dst);
+	char	s2[0] = "";
+	dst = (char *)malloc(0);
+	ft_assert_str(stpcpy(dst, s2), ft_stpcpy(dst, s2), &passed, &failed);
+	free(dst);
+	char	s3[8] = "faf\0fafs";
+	dst = (char *)malloc(8);
+	ft_assert_str(stpcpy(dst, s3), ft_stpcpy(dst, s3), &passed, &failed);
+	free(dst);
+	char	s4[8] = "";
+	dst = (char *)malloc(8);
+	ft_assert_str(stpcpy(dst, s4), ft_stpcpy(dst, s4), &passed, &failed);
+	free(dst);
+	char	s5[4] = " \t\n\r";
+	dst = (char *)malloc(4);
+	ft_assert_str(stpcpy(dst, s5), ft_stpcpy(dst, s5), &passed, &failed);
+	printf("\n--------------\nTOTAL:\t%d\nPASSED:\t%d\nFAILED:\t%d\n--------------\n",
+		passed + failed,
+		passed,
+		failed);
+	return (failed);
+}
+
 int main(void)
 {
 	int	failed = 0;
@@ -164,6 +288,12 @@ int main(void)
 	failed += ft_bzero_test();
 	failed += ft_memcpy_test();
 	failed += ft_memccpy_test();
+	//failed += ft_memmove_test();
+	failed += ft_memchr_test();
+	failed += ft_memcmp_test();
+	failed += ft_strlen_test();
+	failed += ft_strdup_test();
+	failed += ft_stpcpy_test();
 	printf("TOTAL FAILED TESTS: %d\n", failed);
 	return (EXIT_SUCCESS);
 }

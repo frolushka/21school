@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wordlen.c                                       :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 20:37:14 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 12:02:32 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 23:19:34 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 16:28:30 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_wordlen(char const *s, size_t pos, char del)
+void	ft_strclr(char *s)
 {
-	size_t	res;
-
-	res = 0;
-	while (s[pos] && s[pos] != del)
-	{
-		++res;
-		++pos;
-	}
-	return (res);
+	if (s == NULL)
+		return ;
+	while (*s)
+		*s++ = '\0';
 }

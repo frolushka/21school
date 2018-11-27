@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wordcnt.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 20:21:38 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 20:27:42 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/23 12:11:14 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 16:26:00 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_wordcnt(char const *s, char del)
+void	*ft_memchr(void const *s, int c, size_t n)
 {
-	size_t	res;
+	char	*cs;
 	size_t	i;
-	int		is_word;
 
-	res = 0;
-	i = 0;
-	is_word = 0;
-	while (s[i])
+	cs = (char *)s;
+	i = -1;
+	while (++i < n)
 	{
-		if (s[i] != del && !is_word)
-			is_word = 1;
-		else if (s[i] == del && is_word)
-		{
-			is_word = 0;
-			++res;
-		}
-		++i;
+		if ((unsigned char)cs[i] == (unsigned char)c)
+			return ((void *)(&cs[i]));
 	}
-	return (res);
+	return (NULL);
 }

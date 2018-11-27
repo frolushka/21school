@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 23:42:21 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 23:34:33 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 23:37:25 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+void	ft_lstdels(t_list **alst)
 {
-	char	*res;
-
-	if (!(res = (char *)ft_memalloc(size + 1)))
-		return (NULL);
-	return (res);
+	if (!alst)
+		return ;
+	if ((*alst)->next)
+		ft_lstdels(&(*alst)->next);
+	ft_lstdelones(alst);
 }

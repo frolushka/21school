@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 23:28:06 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 12:00:07 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 21:57:35 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char	*res;
 	size_t	i;
 
-	if (s == NULL || !(res = (char *)malloc(ft_strlen(s) + 1)))
+	if (!s || !f || !(res = (char *)malloc(ft_strlen(s) + 1)))
 		return (NULL);
 	i = -1;
 	while (s[++i])

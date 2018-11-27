@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 23:24:16 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/25 23:25:16 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 21:46:03 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_striter(char *s, void (*f)(char *))
 {
-	if (s == NULL)
+	if (!s || !f)
 		return ;
 	while (*s)
 		f(s++);

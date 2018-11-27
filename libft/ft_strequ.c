@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 23:33:45 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 11:58:16 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 23:50:53 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int		ft_strequ(char const *s1, char const *s2)
 	size_t	i;
 
 	i = 0;
-	if (s1 == NULL && s2 == NULL)
+	if (!s1 && !s2)
 		return (1);
-	else if (s1 == NULL || s2 == NULL)
+	else if (!s1 || !s2)
 		return (0);
 	while (s1[i] && s2[i] && s1[i] == s2[i])
 		++i;

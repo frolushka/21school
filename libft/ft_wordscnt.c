@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_wordscnt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 23:42:21 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 19:12:42 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 23:10:58 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+size_t	ft_wordscnt(const char *str, char c)
 {
-	char	*res;
+	size_t	res;
+	size_t	i;
 
-	if (!(res = (char *)ft_memalloc(size + 1)))
-		return (NULL);
+	i = 0;
+	res = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		while (str[i] && str[i] == c)
+			++i;
+		if (str[i] && str[i] != c)
+		{
+			++res;
+			++i;
+		}
+		while (str[i] && str[i] != c)
+			++i;
+	}
 	return (res);
 }

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_islower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 23:42:21 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 21:47:48 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/28 00:00:43 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+int	ft_islower(int c)
 {
-	char	*res;
-
-	if (!(res = (char *)ft_memalloc(size + 1)))
-		return (NULL);
-	return (res);
+	return (c >= 'a' && c <= 'z');
 }

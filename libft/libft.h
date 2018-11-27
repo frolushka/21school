@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:51:41 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 19:17:28 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/28 00:00:49 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,15 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+int					ft_islower(int c);
+int					ft_isupper(int c);
+int					ft_isstn(char c);
+void				*ft_memallcpy(void const *src, size_t len);
 size_t				ft_nbrlen(int n);
-char				*ft_word(const char *str, char c, size_t *i);
-size_t				ft_count_words(const char *str, char c);
+size_t				ft_wordlen(char const *s, char c);
+size_t				ft_wordscnt(const char *str, char c);
+char				**ft_strsfree(char **src);
+void				ft_lstdels(t_list **alst);
+void				ft_lstdelones(t_list **alst);
 
 #endif

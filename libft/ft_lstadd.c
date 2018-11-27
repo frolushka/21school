@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 01:45:02 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 01:46:33 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 23:00:14 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
+	if (!alst)
+		return ;
 	new->next = *alst;
 	*alst = new;
 }

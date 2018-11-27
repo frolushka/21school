@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 23:40:02 by sbednar           #+#    #+#              #
-#    Updated: 2018/11/27 12:21:01 by sbednar          ###   ########.fr        #
+#    Updated: 2018/11/27 21:33:11 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,12 @@ SRCS=ft_*.c
 INCLUDES=ft_*.h
 OBJS=$(SRCS:.c=.o)
 
-$(NAME): all
+all: $(NAME)
 
-all:
+$(NAME):
 	gcc -Wall -Wextra -Werror $(SRCS) -c -I$(INCLUDES)
 	ar rcs $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 clean:
 	rm -f $(OBJS)

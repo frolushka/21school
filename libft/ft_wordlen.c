@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_wordlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 23:42:21 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 23:19:48 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 23:21:39 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+size_t	ft_wordlen(char const *s, char c)
 {
-	char	*res;
+	size_t	res;
+	size_t	i;
 
-	if (!(res = (char *)ft_memalloc(size + 1)))
-		return (NULL);
+	res = 0;
+	i = 0;
+	while (s[i] && s[i] != c)
+	{
+		++res;
+		++i;
+	}
 	return (res);
 }

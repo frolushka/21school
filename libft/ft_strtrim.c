@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 00:29:54 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 12:02:17 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 21:51:22 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ char	*ft_strtrim(char const *s)
 	int		e;
 	int		i;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	b = 0;
-	while (s[b] == ' ' || s[b] == '\t' || s[b] == '\n')
-		b++;
+	while (ft_isstn(s[b]))
+		++b;
 	e = ft_strlen(s) - 1;
-	while (e >= b && (s[e] == ' ' || s[e] == '\t' || s[e] == '\n'))
-		e--;
+	while (e >= b && ft_isstn(s[e]))
+		--e;
 	if (!(res = (char *)malloc(e - b + 2)))
 		return (NULL);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 10:30:44 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 10:32:39 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 11:55:03 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ size_t	ft_nbrlen(int nbr)
 
 	res = 1;
 	if (nbr < 0)
-		res++;
+		++res;
 	while (nbr /= 10)
-		res++;
+		++res;
 	return (res);
 }

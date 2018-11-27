@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 23:36:47 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 15:22:20 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 11:51:02 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ void 	*ft_memccpy(void *dst, void const *src, int c, size_t n)
 
 	csrc = (unsigned char *)src;
 	cdst = (unsigned char *)dst;
-	i = 0;
-
-	while (i < n)
+	i = -1;
+	while (++i < n)
 	{
 		cdst[i] = csrc[i];
 		if (csrc[i] == (unsigned char)c)
 			return ((void *)(&cdst[i + 1]));
-		i++;
 	}
 	return (NULL);
 }

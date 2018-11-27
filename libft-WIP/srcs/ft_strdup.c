@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:56:27 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 15:23:40 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 11:57:53 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 char 	*ft_strdup(char const *s1)
 {
 	char	*res;
-	int		i;
+	size_t		i;
 
 	if (!(res = (char *)malloc((ft_strlen(s1) + 1) * sizeof(*s1))))
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
+	i = -1;
+	while (s1[++i])
 		res[i] = s1[i];
-		i++;
-	}
 	res[i] = '\0';
 	return (res);
 }

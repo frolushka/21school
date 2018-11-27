@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 15:58:54 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/25 16:05:31 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 12:01:15 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ char	*ft_strrchr(char const *s, int c)
 	char	*res;
 
 	slen = ft_strlen(s);
-	i = 0;
+	i = -1;
 	res = NULL;
-	while (i < slen)
+	while (++i < slen)
 	{
 		if (s[i] == (char)c)
 			res = (char *)(&s[i]);
-		i++;
 	}
 	if (i == slen && c == '\0')
 		res = (char *)(&s[i]);

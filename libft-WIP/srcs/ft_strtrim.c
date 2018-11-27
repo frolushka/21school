@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 00:29:54 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 00:47:00 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 12:02:17 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ char	*ft_strtrim(char const *s)
 		return (NULL);
 	i = 0;
 	while (b <= e)
-	{
-		res[i] = s[b++];
-		i++;
-	}
+		res[i++] = s[b++];
 	res[i] = '\0';
 	return (res);
 }

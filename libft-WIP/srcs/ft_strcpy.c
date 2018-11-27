@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:03:25 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/23 15:25:15 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 11:57:34 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strcpy(char *dst, char const *src)
 {
-	int	i;
+	size_t	i;
 
 	i = -1;
 	while (src[++i] != '\0')

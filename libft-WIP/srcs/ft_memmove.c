@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 22:53:37 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 10:54:14 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 11:53:40 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void 	*ft_memmove(void *dst, void const *src, size_t len)
 	if (csrc < cdst)
 	{
 		while ((int)(--len) >= 0)
-			*(cdst + len) = *(csrc + len);
+			cdst[len] = csrc[len];
 	}
 	else
 	{
 		while (++i < len)
-			*(cdst + i) = *(csrc + i);
+			cdst[i] = csrc[i];
 	}
 	return ((void *)cdst);
 }

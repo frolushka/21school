@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 00:49:56 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 00:51:06 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 11:56:34 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putstr(char const *s)
 
 	if (s == NULL)
 		return ;
-	i = 0;
-	while (s[i])
-		ft_putchar(s[i++]);
+	i = -1;
+	while (s[++i])
+		ft_putchar(s[i]);
 }

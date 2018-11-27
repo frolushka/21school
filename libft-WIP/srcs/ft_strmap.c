@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 23:28:06 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/25 23:33:25 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 12:00:07 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char			*res;
-	unsigned int	i;
+	char	*res;
+	size_t	i;
 
 	if (s == NULL || !(res = (char *)malloc(ft_strlen(s) + 1)))
 		return (NULL);
-	i = 0;
-	while (s[i])
-	{
+	i = -1;
+	while (s[++i])
 		res[i] = f(s[i]);
-		i++;
-	}
 	res[i] = '\0';
 	return (res);
 }

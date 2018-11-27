@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 00:23:00 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/22 22:24:29 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 11:59:42 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ size_t	ft_strlen(char const *str)
 
 	len = 0;
 	while (str[len])
-		len++;
+		++len;
 	return (len);
 }

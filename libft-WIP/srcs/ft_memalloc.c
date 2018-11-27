@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 23:07:01 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/25 23:09:28 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/27 11:50:28 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 void	*ft_memalloc(size_t size)
 {
-	char	*res;
-	size_t	i;
+	void	*res;
 
 	if (!(res = malloc(size)))
 		return (NULL);
-	i = 0;
-	while (i < size)
-		res[i++] = '\0';
-	return ((void *)res);
+	ft_bzero(res, size);
+	return (res);
 }

@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 10:21:37 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 01:48:27 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 01:49:29 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char	*res;
+	t_list	*new;
+	t_list	*list;
 
-	if (!(res = (char *)malloc(size + 1)))
+	if (!lst)
 		return (NULL);
-	ft_bzero(res, size + 1);
-	return (res);
+	list = f(lst);
+	new = list;
+	while (lst->next)
+	{
+		lst = lst->next;
+		if (!(list->next = f(lst)))
+		{
+			free(list->next);
+			return (NULL);
+		}
+		list = list->next;
+	}
+	return (new);
 }

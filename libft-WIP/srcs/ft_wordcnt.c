@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_wordcnt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 10:21:37 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 20:21:38 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/26 20:27:42 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+size_t	ft_wordcnt(char const *s, char del)
 {
-	char	*res;
+	size_t	res;
+	size_t	i;
+	int		is_word;
 
-	if (!(res = (char *)malloc(size + 1)))
-		return (NULL);
-	ft_bzero(res, size + 1);
+	res = 0;
+	i = 0;
+	is_word = 0;
+	while (s[i])
+	{
+		if (s[i] != del && !is_word)
+			is_word = 1;
+		else if (s[i] == del && is_word)
+		{
+			is_word = 0;
+			++res;
+		}
+		++i;
+	}
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 23:15:15 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/25 23:19:14 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/26 10:24:24 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	ft_strdel(char **as)
 {
-	char	*temp;
-
-	temp = *as;
-	while (*temp)
-		free(temp++);
-	free(as);
+	if (!as || !(*as))
+		return ;
+	free(*as);
+	*as = NULL;
 }

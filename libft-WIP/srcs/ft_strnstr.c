@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 10:21:37 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 23:39:15 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/26 23:41:03 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strnstr(char const *haystack, char const *needle, size_t len)
 {
-	char	*res;
+	size_t	i;
+	size_t	j;
 
-	if (!(res = (char *)malloc(size + 1)))
-		return (NULL);
-	ft_bzero(res, size + 1);
-	return (res);
+	i = 0;
+	if (!needle[i])
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
+	{
+		j = 0;
+		while (i + j < len && haystack[i + j] && needle[j] && needle[j] == haystack[i + j])
+			++j;
+		if (!needle[j])
+			return ((char *)&haystack[i]);
+		++i;
+	}
+	return (NULL);
 }

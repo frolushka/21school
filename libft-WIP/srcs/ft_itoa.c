@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:12:51 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 10:21:37 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 10:25:09 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/26 10:45:38 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_itoa(int n)
 {
 	char	*res;
+	size_t	e;
 
-	if (!(res = (char *)malloc(size + 1)))
+	e = ft_nbrlen(n);
+	if (!(res = (char *)malloc(e + 1)))
 		return (NULL);
-	ft_bzero(res, size + 1);
+	res[e--] = '\0';
+	if (n < 0)
+	{
+		res[0] = '-';
+		if (n == -2147483648)
+		{
+			res[e--] = '8';
+			n /= 10;
+		}
+		n *= -1;
+	}
+	res[e--] = n % 10 + '0';
+	while (n /= 10)
+		res[e--] = n % 10 + '0';
 	return (res);
 }

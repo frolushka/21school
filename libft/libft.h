@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:51:41 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/28 00:00:49 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/28 20:31:26 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isstn(char c);
-void				*ft_memallcpy(void const *src, size_t len);
+void				ft_putwchar(int wc);
+void				ft_putwchar_fd(int wc, int fd);
+char				*ft_strallcpy(char const *src, size_t len);
 size_t				ft_nbrlen(int n);
 size_t				ft_wordlen(char const *s, char c);
 size_t				ft_wordscnt(const char *str, char c);

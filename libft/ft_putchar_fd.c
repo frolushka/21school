@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 01:11:06 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 01:11:38 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/28 19:54:35 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	ft_putwchar_fd((unsigned char)c, fd);
 }

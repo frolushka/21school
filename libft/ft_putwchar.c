@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putwchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 00:49:25 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/28 19:50:09 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/28 15:37:51 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/28 16:14:41 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+void	ft_putwchar(int wc)
 {
-	ft_putwchar_fd((unsigned char)c, 1);
+	ft_putwchar_fd(wc, 1);
 }

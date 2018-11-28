@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 01:35:13 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/28 00:14:25 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/28 20:26:17 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char		**ft_strsplit(const char *str, char c)
 	{
 		while (str[i] && str[i] == c)
 			++i;
-		if (!(s[j] = (char *)ft_memallcpy(&str[i], ft_wordlen(&str[i], c))))
+		if (!(s[j] = ft_strallcpy(&str[i], ft_wordlen(&str[i], c))))
 			return (ft_strsfree(s));
 		i += ft_wordlen(&str[i], c);
 		++j;

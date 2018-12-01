@@ -6,13 +6,82 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 23:18:57 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/28 23:25:30 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/01 23:45:05 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	get_next_line(int const fd, char **line)
+static t_list	*get_current_node(int const fd, t_list **root)
 {
+	t_list	*cur;
 
+	if (!root)
+		return (NULL);
+	cur = *root;
+	while (cur)
+	{
+		if (cur->content_size == (size_t)fd)
+			return (cur);
+		cur = cur->next;
+	}
+	cur = ft_lstnew("\0", (size_t)fd);
+	ft_lstadd(root, cur);
+	return (*root);
+}
+
+static size_t	get_length(char *line)
+{
+	size_t	res;
+
+	res = 0;
+	while (line[res] && line[res] != '\n')
+		++res;
+	return (res);
+}
+
+static char		*crop_str(t_list *node, size_t s)
+{
+	char	*res;
+
+	if (!(res = ft_strsub(node->content, s, ft_strlen(node->content) - s)))
+		return (NULL);
+	free(node->content);
+	return (res);
+}
+
+static int		get_next_line2(char **l, int s, t_list *c)
+{
+	IFRET0(s < BUFF_SIZE && (!(c->content) || !ft_strlen(c->content)));
+	s = get_length(c->content);
+	IFRETN1(!(*l = ft_strnew(s + 1)));
+	ft_strncpy(*l, c->content, s);
+	if (s < (int)ft_strlen(c->content))
+	{
+		IFRETN1(!(c->content = crop_str(c, s + 1)));
+	}
+	else
+		ft_strdel((char **)&(c->content));
+	return (1);
+}
+
+int				get_next_line(int const fd, char **line)
+{
+	static t_list	*root;
+	t_list			*cur;
+	int				size;
+	char			buf[BUFF_SIZE + 1];
+
+	IFRETN1(fd < 0 || !line || read(fd, buf, 0) < 0);
+	cur = get_current_node(fd, &root);
+	while ((size = read(fd, buf, BUFF_SIZE)) > 0)
+	{
+		buf[size] = '\0';
+		*line = cur->content;
+		IFRETN1(!(cur->content = ft_strjoin(cur->content, buf)));
+		free(*line);
+		if (ft_strchr(cur->content, '\n'))
+			break ;
+	}
+	return (get_next_line2(line, size, cur));
 }

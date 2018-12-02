@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putwchar_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 16:11:26 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/28 20:07:31 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/29 19:14:04 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_print4bytes(int wc, int fd)
 	write(fd, &tmp, 1);
 }
 
-void	ft_putwchar_fd(int wc, int fd)
+void		ft_putwchar_fd(int wc, int fd)
 {
 	if (wc <= 0x7F)
 		write(fd, &wc, 1);

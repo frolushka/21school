@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 23:18:57 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/01 23:45:05 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/03 15:09:00 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,16 @@ static char		*crop_str(t_list *node, size_t s)
 
 static int		get_next_line2(char **l, int s, t_list *c)
 {
-	IFRET0(s < BUFF_SIZE && (!(c->content) || !ft_strlen(c->content)));
+	if (s < BUFF_SIZE && (!(c->content) || !ft_strlen(c->content)))
+		return (0);
 	s = get_length(c->content);
-	IFRETN1(!(*l = ft_strnew(s + 1)));
+	if (!(*l = ft_strnew(s + 1)))
+		return (-1);
 	ft_strncpy(*l, c->content, s);
 	if (s < (int)ft_strlen(c->content))
 	{
-		IFRETN1(!(c->content = crop_str(c, s + 1)));
+		if (!(c->content = crop_str(c, s + 1)))
+			return (-1);
 	}
 	else
 		ft_strdel((char **)&(c->content));
@@ -72,13 +75,15 @@ int				get_next_line(int const fd, char **line)
 	int				size;
 	char			buf[BUFF_SIZE + 1];
 
-	IFRETN1(fd < 0 || !line || read(fd, buf, 0) < 0);
+	if (fd < 0 || !line || read(fd, buf, 0) < 0)
+		return (-1);
 	cur = get_current_node(fd, &root);
 	while ((size = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[size] = '\0';
 		*line = cur->content;
-		IFRETN1(!(cur->content = ft_strjoin(cur->content, buf)));
+		if (!(cur->content = ft_strjoin(cur->content, buf)))
+			return (-1);
 		free(*line);
 		if (ft_strchr(cur->content, '\n'))
 			break ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 01:11:46 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 11:56:21 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/11/29 19:37:13 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putstr_fd(char const *s, int fd)
 {
 	size_t	i;
 
-	if (s == NULL)
+	if (!s)
 		return ;
 	i = -1;
 	while (s[++i])

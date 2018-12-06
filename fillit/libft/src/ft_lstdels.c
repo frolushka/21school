@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 17:14:17 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/07 02:46:00 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 23:34:33 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 23:37:25 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+void	ft_lstdels(t_list **alst)
 {
-	return (0);
+	if (!alst)
+		return ;
+	if ((*alst)->next)
+		ft_lstdels(&(*alst)->next);
+	ft_lstdelones(alst);
 }

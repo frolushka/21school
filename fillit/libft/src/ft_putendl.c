@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 17:14:17 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/07 02:46:00 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 01:03:15 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/29 19:31:49 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+void	ft_putendl(char const *s)
 {
-	return (0);
+	if (!s)
+		return ;
+	ft_putstr(s);
+	ft_putchar('\n');
 }

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 17:14:17 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/07 02:46:00 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/22 00:23:00 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 11:59:42 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+size_t	ft_strlen(char const *str)
 {
-	return (0);
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		++len;
+	return (len);
 }

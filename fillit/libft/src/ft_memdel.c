@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 17:14:17 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/07 02:46:00 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 23:09:47 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 19:21:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+void	ft_memdel(void **ap)
 {
-	return (0);
+	if (ap == NULL)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }

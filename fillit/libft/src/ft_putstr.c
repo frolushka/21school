@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 17:14:17 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/07 02:46:00 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 00:49:56 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/29 19:46:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+void	ft_putstr(char const *s)
 {
-	return (0);
+	size_t	i;
+
+	if (!s)
+		return ;
+	i = -1;
+	while (s[++i])
+		ft_putchar(s[i]);
 }

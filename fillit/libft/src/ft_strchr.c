@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 17:14:17 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/07 02:46:00 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 15:54:05 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 11:57:07 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+char	*ft_strchr(char const *s, int c)
 {
-	return (0);
+	size_t	slen;
+	size_t	i;
+
+	slen = ft_strlen(s);
+	i = 0;
+	while (i < slen)
+	{
+		if (s[i] == (char)c)
+			return ((char *)(&s[i]));
+		++i;
+	}
+	if (i == slen && c == '\0')
+		return ((char *)(&s[i]));
+	return (NULL);
 }

@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reader.h                                        :+:      :+:    :+:   */
+/*   ft_lstdelones.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 18:18:04 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/04 18:18:33 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 23:35:56 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 23:37:13 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_READER_H
-# define FT_READER_H
+#include "libft.h"
 
-
-
-#endif
+void	ft_lstdelones(t_list **alst)
+{
+	if (!alst)
+		return ;
+	free((*alst)->content);
+	free(*alst);
+	*alst = NULL;
+}

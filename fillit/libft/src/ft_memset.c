@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 17:14:17 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/07 02:46:00 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/21 23:58:02 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 11:54:39 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	main(void)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	return (0);
+	char	*p;
+	size_t	i;
+
+	p = (char *)b;
+	i = -1;
+	while (++i < len)
+		p[i] = (unsigned char)c;
+	return ((void *)p);
 }

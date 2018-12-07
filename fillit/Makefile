@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 23:49:07 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/07 02:47:07 by sbednar          ###   ########.fr        #
+#    Updated: 2018/12/07 03:10:41 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SDIR	= ./src
 ODIR	= ./obj
 IDIR	= ./includes
 LDIR	= ./libft
+LIDIR	= $(LDIR)/includes
 
 FILES	= $(shell find $(SDIR) -name "*.c" -type f)
 
@@ -35,7 +36,7 @@ $(ODIR):
 	mkdir -p $(ODIR)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(MAIN) -I $(IDIR) -L $(LDIR) -l ft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(MAIN) -I $(IDIR) -I $(LIDIR) -L $(LDIR) -l ft -o $(NAME)
 
 $(ODIR)/%.o:$(SDIR)/%.c
 	$(CC) $(CFLAGS) -I $(IDIR) -o $@ -c $<

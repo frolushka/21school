@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:45:09 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/10 18:25:06 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/11 01:50:54 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,40 @@
 **	33824 - vertical stick
 */
 
-#include <stdio.h>
 #include "ft_reader.h"
 
-/*	Checks figure type.
-**	Return: 0 if the figure is correct.
-**			-1 if the figure is something strange.
+/*	Проверяет тип фигуры (наличие ее хэша в списке корректных фигур).
+**	Возвращаемое значение:	0, если фигура некорректна.
+**						  	1, если фигура корректна.
 */
 static int	check_figure(int fg)
 {
-	return (fg == 15 || fg == 57 || fg == 113 || fg == 99
-			|| fg == 51 || fg == 225 || fg == 195 || fg == 135
-			|| fg == 71 || fg == 39 || fg == 1569 || fg == 1073
-			|| fg == 561 || fg == 3105 || fg == 2145 || fg == 1121
-			|| fg == 1059 || fg == 33824);
+	return (fg == 14 || fg == 56 || fg == 112 || fg == 98
+			|| fg == 50 || fg == 224 || fg == 194 || fg == 134
+			|| fg == 70 || fg == 38 || fg == 1568 || fg == 1072
+			|| fg == 560 || fg == 3104 || fg == 2144 || fg == 1120
+			|| fg == 1058 || fg == 33824);
 }
 
-static int	get_hash(t_barray *ba)
+/*	Считает хэш фигуры на основе строки str. Хэш высчитывается по формуле,
+**	которую аккуратно вывел Мася потными прогерскими вечерами :3
+**	Возвращаемое значение:	хэш фигуры.
+**
+*/
+static int	get_hash(char const *str)
 {
-	int		res;
-	int		fo;
-	size_t	i;
+	int	res;
+	int	fo;
+	int	i;
+	int	len;
 
 	res = 0;
 	fo = -1;
 	i = -1;
-	while (++i < ba->size * 8)
+	len = (int)ft_strlen(str);
+	while (++i < len)
 	{
-		if (ft_ba_get(ba, i) == 1)
+		if (str[i] == '#')
 		{
 			if (fo == -1)
 				fo = i;
@@ -69,76 +75,88 @@ static int	get_hash(t_barray *ba)
 	return (res);
 }
 
-/*	Tryes to read a single block of data (figure) from the file by the pattern.
-**	Pattern means block of 4 lines that contain only 4 symbols '#' and '.' with
-**	terminating '\n' at the end. Blocks must be separated by empty lines.
-**	There is no empty line at the end of the file (last block).
-**	Return: -1 if reading fails.
-**			0 if reading OK.
+/*	Пытается считать фигуру из файла, заданную по шаблону.
+**	Шаблон представляет из себя фигуру размером 4 на 4.
+**	В случае нарушения шаблона выдает ошибку.
+**	Возвращаемое значение:	1, если чтение прошло без ошибок.
+**							0, если возникли ошибки.
 */
-static int	read_figure(int fd, t_list **fig)
+static int	read_block(int fd, char **block)
 {
-	int			i1;
-	int			i2;
-	char		*tmp;
-	t_barray	*ba;
-	int			sts;
+	int		i1;
+	int		i2;
+	char	*tmp;
 
 	i1 = -1;
-	if (!(ba = ft_ba_init(2)))
-		return (-1);
+	*block = (char *)ft_memalloc(17);
 	while (++i1 < 4)
 	{
 		if (get_next_line(fd, &tmp) < 1 || ft_strlen(tmp) != 4)
-			return (-1);
+			return (0);
 		i2 = -1;
 		while (++i2 < 4)
 		{
 			if (tmp[i2] != '#' && tmp[i2] != '.')
 			{
 				free(tmp);
-				return (-1);
+				return (0);
 			}
-			ft_ba_set(ba, i1 * 4 + i2, tmp[i2] == '#' ? 1 : 0);
 		}
+		ft_strcat(*block, tmp);
 	}
-	if (!check_figure(get_hash(ba)))
+	return (1);
+}
+
+/*	Создает новую вершину t_dlist на основе считанного блока из read_block,
+**	после чего записывает ее по адресу fig. Если после блока в файле не стоит
+**	символ '\n' или EOF, выдает ошибку.
+**	Возвращаемое значение:	-1, если произошла ошибка чтения.
+**							0, если чтение прошло без ошибок и EOF.
+**							1, если чтение прошло без ошибок и не EOF.
+*/
+static int	read_figure(int fd, t_dlist **fig)
+{
+	int		hash;
+	int		sts;
+	char	*block;
+
+	if (!read_block(fd, &block))
 		return (-1);
-	*fig = ft_lstnew("\0", (size_t)get_hash(ba));
-	free(tmp);
-	tmp = NULL;
-	sts = get_next_line(fd, &tmp);
-	if (sts == 1 && !(ft_strlen(tmp) == 1 && tmp[0] == '\n'))
+	hash = get_hash(block);
+	free(block);
+	if (!check_figure(hash))
+		return (-1);
+	*fig = ft_dlst_new(hash);
+	sts = get_next_line(fd, &block);
+	if (sts == 1 && *block)
 		sts = -1;
-	if (tmp == NULL)
-		free(tmp);
+	if (sts != 0 && block)
+		free(block);
 	return (sts);
 }
 
-/*	Reads data from file descriptor [fd] and put results to var fgs.
-**	Matching the right file pattern checked by function read_figure.
-**	Return:	0 if function reached EOF of file.
-**			-1 if an error occured.
+/*	Считывает список фигур из файла, заданного дескриптором fd.
+**	Возвращаемое значение:	0, если чтение прошло без ошибок.
+**							-1, если во время чтения файла возникли ошибки.
 */
-int			read_figures(int fd, t_list **fgs)
+int			read_figures(int fd, t_dlist **fgs)
 {
-	t_list	*tmp;
+	t_dlist	*tmp;
 	int		sts;
+	int		size;
 
-	/*  1 means OK but not EOF
-	**	-1 means error
-	*/
+	size = 0;
 	while ((sts = read_figure(fd, &tmp)) != 0)
 	{
-		if (sts < 0)
+		if (sts < 0 || ++size > 26)
 		{
 			close(fd);
 			if (!tmp)
 				free(tmp);
-			ft_lstdels(fgs);
+			ft_dlst_clear(fgs);
 			return (-1);
 		}
-		ft_lstadd_back(fgs, tmp);
+		ft_dlst_pushback(fgs, tmp);
 	}
 	close(fd);
 	return (0);

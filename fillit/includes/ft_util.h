@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdels.c                                       :+:      :+:    :+:   */
+/*   ft_util.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 23:34:33 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/10 17:14:12 by sbednar          ###   ########.fr       */
+/*   Created: 2018/12/07 04:08:08 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/10 16:44:33 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_UTIL_H
+# define FT_UTIL_H
 
-void	ft_lstdels(t_list **alst)
-{
-	if (!alst || !(*alst))
-		return ;
-	if ((*alst)->next)
-		ft_lstdels(&(*alst)->next);
-	ft_lstdelones(alst);
-}
+# define USAGE_MSG "usage: ./fillit source_file\n"
+
+#endif

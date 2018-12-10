@@ -6,11 +6,12 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 23:49:07 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/07 03:10:41 by sbednar          ###   ########.fr        #
+#    Updated: 2018/12/10 17:18:22 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= fillit
+DNAME	= fillit.dSYM
 
 SDIR	= ./src
 ODIR	= ./obj
@@ -39,7 +40,21 @@ $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(MAIN) -I $(IDIR) -I $(LIDIR) -L $(LDIR) -l ft -o $(NAME)
 
 $(ODIR)/%.o:$(SDIR)/%.c
-	$(CC) $(CFLAGS) -I $(IDIR) -o $@ -c $<
+	$(CC) $(CFLAGS) -I $(IDIR) -I $(LIDIR) -o $@ -c $<
+
+debug:
+	$(MAKE) -C $(LDIR) all
+	$(MAKE) $(ODIR)
+	$(MAKE) $(NAME)
+
+$(ODIR):
+	mkdir -p $(ODIR)
+
+$(NAME) : $(OBJ)
+	$(CC) -g $(CFLAGS) $(OBJ) $(MAIN) -I $(IDIR) -I $(LIDIR) -L $(LDIR) -l ft -o $(NAME)
+
+$(ODIR)/%.o:$(SDIR)/%.c
+	$(CC) -g $(CFLAGS) -I $(IDIR) -I $(LIDIR) -o $@ -c $<
 
 clean:
 	rm -rf $(ODIR)
@@ -47,7 +62,17 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
+dfclean: clean
+	rm -f $(NAME)
+	rm -rf $(DNAME)
+
+fcleanlib:
+	$(MAKE) -C $(LDIR) fclean
+	$(MAKE) fclean
+
 re: fclean all
+
+dre: dfclean debug
 
 relib:
 	$(MAKE) -C $(LDIR) re

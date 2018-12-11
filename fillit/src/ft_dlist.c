@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 00:34:08 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/11 00:50:44 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/11 22:12:34 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		ft_dlst_clear(t_dlist **root)
 		cur = cur->next;
 		free(tmp);
 	}
+	*root = NULL;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:45:09 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/11 19:15:32 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/11 19:18:27 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int			read_figures(int fd, t_dlist **fgs)
 	int		size;
 
 	size = 0;
-	while ((sts = read_figure(fd, &tmp)) < 2)
+	while ((sts = read_figure(fd, &tmp)) != 0)
 	{
 		if (sts < 0 || ++size > 26)
 		{
@@ -159,9 +159,8 @@ int			read_figures(int fd, t_dlist **fgs)
 			return (-1);
 		}
 		ft_dlst_pushback(fgs, tmp);
-		if (sts == 0)
-			break ;
 	}
+	ft_dlst_pushback(fgs, tmp);
 	close(fd);
 	return (0);
 }

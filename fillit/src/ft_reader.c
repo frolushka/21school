@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:45:09 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/11 01:54:14 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/11 19:15:32 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 **	33824 - vertical stick
 */
 
+#include <stdio.h>
 #include "ft_reader.h"
 
 /*	Проверяет тип фигуры (наличие ее хэша в списке корректных фигур).
@@ -42,7 +43,7 @@ static int	check_figure(int fg)
 	return (fg == 14 || fg == 56 || fg == 112 || fg == 98
 			|| fg == 50 || fg == 224 || fg == 194 || fg == 134
 			|| fg == 70 || fg == 38 || fg == 1568 || fg == 1072
-			|| fg == 560 || fg == 3104 || fg == 2144 || fg == 1120
+			|| fg == 560 || fg == 3104 || fg == 2114 || fg == 1120
 			|| fg == 1058 || fg == 33824);
 }
 
@@ -123,6 +124,7 @@ static int	read_figure(int fd, t_dlist **fig)
 	if (!read_block(fd, &block))
 		return (-1);
 	hash = get_hash(block);
+	printf("hash: %d\n", hash);
 	free(block);
 	if (!check_figure(hash))
 		return (-1);
@@ -146,7 +148,7 @@ int			read_figures(int fd, t_dlist **fgs)
 	int		size;
 
 	size = 0;
-	while ((sts = read_figure(fd, &tmp)) != 0)
+	while ((sts = read_figure(fd, &tmp)) < 2)
 	{
 		if (sts < 0 || ++size > 26)
 		{
@@ -157,6 +159,8 @@ int			read_figures(int fd, t_dlist **fgs)
 			return (-1);
 		}
 		ft_dlst_pushback(fgs, tmp);
+		if (sts == 0)
+			break ;
 	}
 	close(fd);
 	return (0);

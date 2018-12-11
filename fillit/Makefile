@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 23:49:07 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/10 17:18:22 by sbednar          ###   ########.fr        #
+#    Updated: 2018/12/11 21:58:24 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,10 @@ fclean: clean
 dfclean: clean
 	rm -f $(NAME)
 	rm -rf $(DNAME)
+
+cleanlib:
+	$(MAKE) -C $(LDIR) clean
+	$(MAKE) clean
 
 fcleanlib:
 	$(MAKE) -C $(LDIR) fclean

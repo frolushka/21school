@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:45:09 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/11 19:18:27 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/11 21:59:56 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 **	33824 - vertical stick
 */
 
-#include <stdio.h>
 #include "ft_reader.h"
 
 /*	Проверяет тип фигуры (наличие ее хэша в списке корректных фигур).
@@ -124,7 +123,6 @@ static int	read_figure(int fd, t_dlist **fig)
 	if (!read_block(fd, &block))
 		return (-1);
 	hash = get_hash(block);
-	printf("hash: %d\n", hash);
 	free(block);
 	if (!check_figure(hash))
 		return (-1);

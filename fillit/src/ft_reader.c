@@ -6,28 +6,28 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:45:09 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/11 01:50:54 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/11 01:54:14 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*	15 - horizontal stick
-**	57 - horizontal mirror Г
-**	113 - horizontal T up-down
-**	99 - cube
-**	51 - horizontal 4
-**	225 - horizontal Г
-**	195 - horizontal mirror 4
-**  135 - horizontal Г up-down
-**	71 - horizontal T
-**	39 - horizontal mirrir Г up-down
-**	1569 - vertical Г up-down
-**	1073 - left T
-**	561 - vertical mirror 4
-**	3105 - vertical mirror Г up-down
-**	2145 - vertical 4
-**	1121 - right T
-**	2115 - vertical mirror Г
-**	1059 - vertical Г
+/*	14 - horizontal stick
+**	56 - horizontal mirror Г
+**	112 - horizontal T up-down
+**	98 - cube
+**	50 - horizontal 4
+**	224 - horizontal Г
+**	194 - horizontal mirror 4
+**  134 - horizontal Г up-down
+**	70 - horizontal T
+**	38 - horizontal mirrir Г up-down
+**	1568 - vertical Г up-down
+**	1072 - left T
+**	560 - vertical mirror 4
+**	3104 - vertical mirror Г up-down
+**	2144 - vertical 4
+**	1120 - right T
+**	2114 - vertical mirror Г
+**	1058 - vertical Г
 **	33824 - vertical stick
 */
 

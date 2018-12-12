@@ -1,6 +1,0 @@
-[submodule "fillit"]
-	path = fillit
-	url = https://github.com/frolushka/fillit.git
-[submodule "libft"]
-	path = libft
-	url = https://github.com/frolushka/libft.git

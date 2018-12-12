@@ -6,15 +6,15 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 00:32:48 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/11 01:01:58 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/12 12:48:15 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DLIST_H
 # define FT_DLIST_H
 
-#include <stdlib.h>
-#include "string.h"
+# include <stdlib.h>
+# include "string.h"
 
 typedef struct		s_dlist
 {

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 00:32:48 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/13 00:56:32 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/13 12:06:00 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct		s_dlist
 }					t_dlist;
 
 t_dlist				*ft_dlst_new(int const val);
-t_dlist				*ft_dlist_get(t_dlist *root, int i);
 int					ft_dlst_pushback(t_dlist **root, t_dlist *node);
 int					ft_dlst_clear(t_dlist **root);
 int					ft_dlst_size(t_dlist *root);

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 00:34:08 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/13 01:26:09 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/13 12:06:08 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,6 @@ t_dlist	*ft_dlst_new(int const val)
 		return (NULL);
 	res->value = val;
 	res->next = NULL;
-	return (res);
-}
-
-t_dlist	*ft_dlist_get(t_dlist *root, int i)
-{
-	t_dlist	*res;
-
-	if (!root || i < 0)
-		return (NULL);
-	res = root;
-	while (i-- > 0 && res)
-		res = res->next;
 	return (res);
 }
 

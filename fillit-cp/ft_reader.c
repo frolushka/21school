@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:45:09 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/12 08:30:45 by edraugr-         ###   ########.fr       */
+/*   Updated: 2018/12/14 01:05:46 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ static int	read_block(int fd, char **block)
 	char	*tmp;
 
 	i1 = -1;
-	*block = (char *)ft_memalloc(17);
+	if (!(*block = (char *)ft_memalloc(17)))
+		return (0);
 	while (++i1 < 4)
 	{
 		if (get_next_line(fd, &tmp) < 1 || ft_strlen(tmp) != 4)
@@ -115,6 +116,8 @@ static int	read_block(int fd, char **block)
 			if (tmp[i2] != '#' && tmp[i2] != '.')
 			{
 				free(tmp);
+				if (*block)
+					free(*block);
 				return (0);
 			}
 		}
@@ -165,15 +168,15 @@ int			read_figures(int fd, t_dlist **fgs)
 	int		sts;
 	int		size;
 
+	tmp = NULL;
 	size = 0;
 	while ((sts = read_figure(fd, &tmp)) != 0)
 	{
-		if (sts < 0 || ++size > 26)
+		if (sts < 0 || ++size > 26 || !tmp)
 		{
 			close(fd);
-			if (!tmp)
+			if (tmp)
 				free(tmp);
-			ft_dlst_clear(fgs);
 			return (-1);
 		}
 		ft_dlst_pushback(fgs, tmp);

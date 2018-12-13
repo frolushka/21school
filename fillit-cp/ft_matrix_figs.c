@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 01:23:06 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/13 01:39:48 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/14 00:01:31 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,22 @@ int		ft_matrix_checkfg(t_matrix *m, int const r, int const c, int const fg)
 	return (res);
 }
 
-int		ft_matrix_setfg(t_matrix **m, int const r, int const c, int const fg, char const s)
+int		ft_matrix_setfg(t_matrix **m, int const rc, int const fg, char const s)
 {
-	int	res;
 	int	i;
 	int size;
 
 	i = -1;
 	size = 4;
-	if ((res = ft_matrix_checkfg(*m, r, c, fg)) != 1)
-		return (res);
 	while (++i <= 12)
 		if (fg & (1 << i))
 		{
 			size--;
-			ft_matrix_set(m, r + i / 4, c + i % 4, s);
+			ft_matrix_set(m, rc / 100 + i / 4, rc % 100 + i % 4, s);
 			if (size == 0)
 				break ;
 		}
-	return (res);
+	return (1);
 }
 
 void	ft_matrix_delfg(t_matrix **m, int const r, int const c, int const fg)

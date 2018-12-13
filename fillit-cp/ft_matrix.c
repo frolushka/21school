@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 01:14:54 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/13 01:44:30 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/13 23:56:21 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void			ft_matrix_delete(t_matrix **m)
 {
 	if (!m || !*m)
 		return ;
-	free((*m)->matrix);
+	if ((*m)->matrix)
+		free((*m)->matrix);
 	free(*m);
 	*m = NULL;
 }

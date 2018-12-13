@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 00:34:08 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/13 12:06:08 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/14 01:04:52 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,11 @@ int		ft_dlst_pushback(t_dlist **root, t_dlist *node)
 
 int		ft_dlst_clear(t_dlist **root)
 {
-	t_dlist	*cur;
-	t_dlist	*tmp;
-
-	if (!root)
-		return (-1);
-	cur = *root;
-	while (cur)
-	{
-		tmp = cur;
-		cur = cur->next;
-		free(tmp);
-	}
+	if (!root || !*root)
+		return (0);
+	if ((*root)->next)
+		ft_dlst_clear(&((*root)->next));
+	free(*root);
 	return (0);
 }
 

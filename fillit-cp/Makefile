@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 23:49:07 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/13 02:44:07 by sbednar          ###   ########.fr        #
+#    Updated: 2018/12/14 00:03:25 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC		= ft_dlist.c \
 OBJ		= $(SRC:.c=.o)
 MAIN	= main.c
 
-CC		= gcc -g
+CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
 all: $(NAME)

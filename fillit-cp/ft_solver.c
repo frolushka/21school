@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 14:35:54 by edraugr-          #+#    #+#             */
-/*   Updated: 2018/12/13 02:46:27 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/13 23:55:32 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		find_places(t_dlist *fg, t_matrix **m, int ofs)
 	cs = (*m)->cols;
 	while ((i = find_place(fg, m, i)) != -1)
 	{
-		ft_matrix_setfg(m, i / cs, i % cs, fg->value, 'A' + ofs);
+		ft_matrix_setfg(m, i / cs * 100 + i % cs, fg->value, 'A' + ofs);
 		if (find_places(fg->next, m, ofs + 1) == 0)
 			return (0);
 		ft_matrix_delfg(m, i / cs, i % cs, fg->value);
@@ -74,13 +74,16 @@ int		solve(t_dlist *root)
 	if (!root)
 		return (-1);
 	min_size = get_square_size(ft_dlst_size(root));
-	m = ft_matrix_init(min_size, min_size);
+	if (!(m = ft_matrix_init(min_size, min_size)))
+		return (-1);
 	while (find_places(root, &m, 0) < 0)
 	{
 		ft_matrix_delete(&m);
 		min_size++;
-		m = ft_matrix_init(min_size, min_size);
+		if (!(m = ft_matrix_init(min_size, min_size)))
+			return (-1);
 	}
 	ft_matrix_print(m);
+	ft_matrix_delete(&m);
 	return (0);
 }

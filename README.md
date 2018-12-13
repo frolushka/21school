@@ -1,14 +1,18 @@
-# Школа 21
-Здесь Вы можете найти мои решения проектов, представленных в Holy Graph школы 42. Решения будут загружаться по мере выполнения (папки с суффиксом -WIP) и после успешной сдачи (без суффиксов).
+21 SCHOOL
+=========
 
-# Статус проектов
-| Проект           | Закончен | Итоговая оценка |
+My solutions for tasks that occur during 21 School education process. Projects uploaded in the same name folder in root of the project (e.g. you can find 'Libft' in 'libft' folder).
+
+PROJECTS STATUS
+---------------
+| PROJECT           | DONE       | FINAL GRADE       |
 | :---------------- | :--------: | :---------------: |
-| 42 Commandements | ДА | 100/100 |
-| Piscine Reloaded | ДА | 100/100 |
-| Libft | ДА | 115/100 |
-| Get Next Line | ДА | 125/100 |
-| Fill It | НЕТ | - |
+| 42 Commandements | YES | 100/100 |
+| Piscine Reloaded | YES | 100/100 |
+| Libft | YES | 115/100 |
+| Get Next Line | YES | 125/100 |
+| Fill It | NO | - |
 
-# Комментарии
-libft: ft_atoi не работает на тестах типа "000000000000000000005", думаю переделать
+COMMENTS
+--------
+libft: ft_atoi doesn't work on tests like "000000000000000000005", wip

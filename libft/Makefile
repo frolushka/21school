@@ -3,15 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
+#    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 23:40:02 by sbednar           #+#    #+#              #
-#    Updated: 2018/11/29 19:21:30 by sbednar          ###   ########.fr        #
+#    Updated: 2018/12/13 02:16:04 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libft.a
-SRCS=ft_memset.c \
+NAME 	= libft.a
+
+SRC		= ft_memset.c \
 	ft_bzero.c \
 	ft_memcpy.c \
 	ft_memccpy.c \
@@ -67,6 +68,7 @@ SRCS=ft_memset.c \
 	ft_lstdelone.c \
 	ft_lstdel.c \
 	ft_lstadd.c \
+	ft_lstadd_back.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
 	ft_islower.c \
@@ -80,21 +82,27 @@ SRCS=ft_memset.c \
 	ft_wordscnt.c \
 	ft_strsfree.c \
 	ft_lstdels.c \
-	ft_lstdelones.c
-INCLUDES=libft.h
-OBJS=$(SRCS:.c=.o)
+	ft_lstdelones.c \
+	get_next_line.c
+OBJ		= $(SRC:.c=.o)
+
+CC 		= gcc
+CFLAGS	= -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME):
-	gcc -Wall -Wextra -Werror $(SRCS) -c -I$(INCLUDES)
-	ar rcs $(NAME) $(OBJS)
-	ranlib $(NAME)
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
+%.o:%.c
+	$(CC) $(CFLAGS) -I . -o $@ -c $<
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

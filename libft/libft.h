@@ -6,16 +6,19 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:51:41 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/28 20:31:26 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/13 02:15:15 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+# define BUFF_SIZE 32
 
 typedef struct		s_list
 {
@@ -82,6 +85,7 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
@@ -97,5 +101,7 @@ size_t				ft_wordscnt(const char *str, char c);
 char				**ft_strsfree(char **src);
 void				ft_lstdels(t_list **alst);
 void				ft_lstdelones(t_list **alst);
+
+int					get_next_line(int const fd, char **line);
 
 #endif

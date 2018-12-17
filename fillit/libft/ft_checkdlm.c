@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_checkdlm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 17:51:12 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/29 16:38:20 by edraugr-          #+#    #+#             */
+/*   Updated: 2018/11/29 16:41:04 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include "ft_token.h"
-# include "libft.h"
-
-int	ft_printf(char const *f, ...);
-
-#endif
+int	ft_checkdlm(char c, const char dlm)
+{
+	if (c == dlm)
+		return (1);
+	return (0);
+}

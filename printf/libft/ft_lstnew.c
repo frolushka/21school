@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 17:14:17 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 22:07:09 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 00:05:28 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/17 17:14:49 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "libft.h"
-#include "ft_dlist.h"
-#include "ft_reader.h"
-#include "ft_matrix.h"
-#include "ft_matrix_figs.h"
-#include "ft_solver.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_dlist	*fgs;
-	int		fd;
+	t_list	*res;
 
-	fgs = NULL;
-	if (argc != 2)
+	if (!(res = (t_list *)malloc(sizeof(*res))))
+		return (NULL);
+	if (!content)
 	{
-		ft_putendl(USAGE_MSG);
-		return (0);
+		res->content = NULL;
+		res->content_size = 0;
 	}
-	if ((fd = open(argv[1], O_RDONLY)) <= 0
-		|| read_figures(fd, &fgs) != 0
-		|| solve(fgs) != 0)
-		ft_putendl("error");
-	ft_dlst_clear(&fgs);
-	return (0);
+	else
+	{
+		if (!(res->content = malloc(content_size)))
+		{
+			free(res);
+			return (NULL);
+		}
+		ft_memcpy(res->content, content, content_size);
+		res->content_size = content_size;
+	}
+	res->next = NULL;
+	return (res);
 }

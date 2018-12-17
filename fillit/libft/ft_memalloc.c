@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 17:44:58 by edraugr-          #+#    #+#             */
+/*   Updated: 2018/11/28 21:06:15 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	ft_printf(char const *f, ...)
+void	*ft_memalloc(size_t size)
 {
-	va_list	va;
-	t_list	*toks;
 	char	*res;
 
-	if (!f || !(toks = ft_toks_get(f)))
-		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	if (!(res = (char *)malloc(size)))
+		return (NULL);
+	ft_bzero((void *)res, size);
+	return ((void *)res);
 }

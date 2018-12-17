@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/28 21:35:43 by edraugr-          #+#    #+#             */
+/*   Updated: 2018/11/29 13:11:40 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(char const *f, ...)
+int	ft_strequ(const char *s1, const char *s2)
 {
-	va_list	va;
-	t_list	*toks;
-	char	*res;
-
-	if (!f || !(toks = ft_toks_get(f)))
+	if (!s1 || !s2)
 		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	return (!ft_strcmp(s1, s2) ? 1 : 0);
 }

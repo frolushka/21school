@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_checkdlms.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/29 15:47:04 by edraugr-          #+#    #+#             */
+/*   Updated: 2018/12/17 22:02:24 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(char const *f, ...)
+int	ft_checkdlms(char c, const char *dlms)
 {
-	va_list	va;
-	t_list	*toks;
-	char	*res;
+	int	i;
 
-	if (!f || !(toks = ft_toks_get(f)))
-		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	i = -1;
+	while (dlms[++i])
+		if (ft_checkdlm(c, dlms[i]))
+			return (1);
+	return (0);
 }

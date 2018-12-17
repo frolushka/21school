@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 17:51:12 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 15:59:18 by edraugr-          #+#    #+#             */
+/*   Updated: 2018/11/26 16:04:30 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include "ft_token.h"
-# include "libft.h"
+char	*ft_strncat(char *s1, const char *s2, size_t n)
+{
+	size_t	len;
+	size_t	i;
 
-int	ft_printf(char const *f, ...);
-
-#endif
+	len = (size_t)ft_strlen(s1);
+	i = 0;
+	while (s2[i] && i < n)
+	{
+		s1[len + i] = s2[i];
+		i++;
+	}
+	s1[len + i] = '\0';
+	return (s1);
+}

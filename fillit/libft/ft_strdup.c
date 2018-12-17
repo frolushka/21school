@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 13:59:51 by edraugr-          #+#    #+#             */
+/*   Updated: 2018/11/26 14:16:49 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	ft_printf(char const *f, ...)
+char	*ft_strdup(const char *s1)
 {
-	va_list	va;
-	t_list	*toks;
 	char	*res;
+	int		i;
 
-	if (!f || !(toks = ft_toks_get(f)))
-		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	i = 0;
+	if (!(res = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
+		return (NULL);
+	while (s1[i])
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }

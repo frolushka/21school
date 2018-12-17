@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 17:51:12 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 19:18:29 by edraugr-          #+#    #+#             */
+/*   Updated: 2018/11/29 13:21:23 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
+#include <stdlib.h>
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include "ft_token.h"
-# include "libft.h"
-
-int	ft_printf(char const *f, ...);
-
-#endif
+void	ft_memdel(void **ap)
+{
+	if (!ap || !*ap)
+		return ;
+	free(*ap);
+	*ap = NULL;
+}

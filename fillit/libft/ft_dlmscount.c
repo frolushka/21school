@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_dlmscount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 17:51:12 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/29 16:42:32 by edraugr-          #+#    #+#             */
+/*   Updated: 2018/11/29 16:50:12 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include "ft_token.h"
-# include "libft.h"
+int	ft_dlmscount(const char *str, const char *dlms)
+{
+	int	res;
 
-int	ft_printf(char const *f, ...);
-
-#endif
+	res = 0;
+	while (ft_checkdlms(str[res], dlms) && str[res])
+		res++;
+	if (!str[res])
+		return (-1);
+	return (res);
+}

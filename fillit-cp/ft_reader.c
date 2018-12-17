@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 23:45:09 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/14 01:05:46 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/15 18:21:39 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ int			read_figures(int fd, t_dlist **fgs)
 			return (-1);
 		}
 		ft_dlst_pushback(fgs, tmp);
+		tmp = NULL;
 	}
 	ft_dlst_pushback(fgs, tmp);
 	close(fd);

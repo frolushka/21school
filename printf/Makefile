@@ -5,21 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/12/04 23:49:07 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/15 18:22:48 by sbednar          ###   ########.fr        #
+#    Created: 2018/12/16 00:43:10 by sbednar           #+#    #+#              #
+#    Updated: 2018/12/16 18:25:08 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fillit
+NAME	= libftprintf.a
 
-LDIR	= ./libft
-LNAME	= ./libft/libft.a
+#LDIR	= ./libft
+#LNAME	= ./libft/libft.a
 
-SRC		= ft_dlist.c \
-	ft_matrix_figs.c \
-	ft_matrix.c \
-	ft_reader.c \
-	ft_solver.c
+SRC		= ft_printf.c
 OBJ		= $(SRC:.c=.o)
 MAIN	= main.c
 
@@ -28,21 +24,16 @@ CFLAGS	= -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME) : $(LNAME) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(MAIN) -I. -I$(LDIR) -L$(LDIR) -lft -o $(NAME)
-
-$(LNAME):
-	$(MAKE) -C $(LDIR) all
+$(NAME): $(OBJ)
+	ar rcs $(CFLAGS) $(OBJ) -I. -o $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) -I. -I$(LDIR) -o $@ -c $<
+	$(CC) $(CFLAGS) -I. -o $@ -c $<
 
 clean:
-	$(MAKE) -C $(LDIR) clean
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(LNAME)
 	rm -f $(NAME)
 
 re: fclean all

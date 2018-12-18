@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 17:51:12 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/23 15:26:02 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/26 23:49:08 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include "ft_token.h"
-# include "libft.h"
+char	*ft_strncpy(char *dst, char const *src, size_t len)
+{
+	size_t	i;
 
-int	ft_printf(char const *f, ...);
-
-#endif
+	i = 0;
+	while (i < len)
+	{
+		if (src[i])
+			dst[i] = src[i];
+		else
+		{
+			while (i < len)
+				dst[i++] = '\0';
+		}
+		++i;
+	}
+	return (dst);
+}

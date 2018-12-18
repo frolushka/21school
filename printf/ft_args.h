@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_args.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/12/17 17:58:32 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/17 18:01:30 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_ARGS_H
+# define FT_ARGS_H
 
-int	ft_printf(char const *f, ...)
-{
-	va_list	va;
-	t_list	*toks;
-	char	*res;
+# include <stdarg.h>
+# include "libft.h"
 
-	if (!f || !(toks = ft_toks_get(f)))
-		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
-}
+t_list	*ft_get_toks()
+
+#endif

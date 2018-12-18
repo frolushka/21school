@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 23:33:45 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 23:50:53 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(char const *f, ...)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	va_list	va;
-	t_list	*toks;
-	char	*res;
+	size_t	i;
 
-	if (!f || !(toks = ft_toks_get(f)))
+	i = 0;
+	if (!s1 && !s2)
+		return (1);
+	else if (!s1 || !s2)
 		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		++i;
+	return ((s1[i] == '\0' && s2[i] == '\0') ? 1 : 0);
 }

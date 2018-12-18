@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/22 22:56:15 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 16:26:12 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(char const *f, ...)
+void	*ft_memcpy(void *dst, void const *src, size_t n)
 {
-	va_list	va;
-	t_list	*toks;
-	char	*res;
+	char	*csrc;
+	char	*cdst;
+	size_t	i;
 
-	if (!f || !(toks = ft_toks_get(f)))
-		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	csrc = (char *)src;
+	cdst = (char *)dst;
+	i = -1;
+	while (++i < n)
+		cdst[i] = csrc[i];
+	return ((void *)cdst);
 }

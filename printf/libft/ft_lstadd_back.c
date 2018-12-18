@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 17:51:12 by sbednar          ###   ########.fr       */
+/*   Created: 2018/12/08 00:08:32 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/08 00:11:36 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include "ft_token.h"
-# include "libft.h"
+void	ft_lstadd_back(t_list **alst, t_list *new)
+{
+	t_list	*cur;
 
-int	ft_printf(char const *f, ...);
-
-#endif
+	if (!alst)
+		return ;
+	if (!(*alst))
+		*alst = new;
+	else
+	{
+		cur = *alst;
+		while (cur->next)
+			cur = cur->next;
+		cur->next = new;
+	}
+}

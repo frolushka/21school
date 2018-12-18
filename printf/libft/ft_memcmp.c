@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/23 14:43:20 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/27 16:26:43 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(char const *f, ...)
+int	ft_memcmp(void const *s1, void const *s2, size_t n)
 {
-	va_list	va;
-	t_list	*toks;
-	char	*res;
+	unsigned char	*cs1;
+	unsigned char	*cs2;
+	size_t			i;
 
-	if (!f || !(toks = ft_toks_get(f)))
-		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	cs1 = (unsigned char *)s1;
+	cs2 = (unsigned char *)s2;
+	i = -1;
+	while (++i < n)
+	{
+		if (cs1[i] != cs2[i])
+			return (cs1[i] - cs2[i]);
+	}
+	return (0);
 }

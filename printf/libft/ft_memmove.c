@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 22:53:37 by sbednar           #+#    #+#             */
+/*   Updated: 2018/11/29 19:25:14 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(char const *f, ...)
+void	*ft_memmove(void *dst, void const *src, size_t len)
 {
-	va_list	va;
-	t_list	*toks;
-	char	*res;
+	char	*cdst;
+	char	*csrc;
+	size_t	i;
 
-	if (!f || !(toks = ft_toks_get(f)))
-		return (0);
-	va_start(va, f);
-	res = ft_toks_parse(f, toks);
-	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	if (!dst && !src)
+		return (NULL);
+	cdst = (char *)dst;
+	csrc = (char *)src;
+	i = -1;
+	if (csrc < cdst)
+	{
+		while ((int)(--len) >= 0)
+			cdst[len] = csrc[len];
+	}
+	else
+	{
+		while (++i < len)
+			cdst[i] = csrc[i];
+	}
+	return ((void *)cdst);
 }

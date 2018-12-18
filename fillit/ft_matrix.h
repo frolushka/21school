@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_matrix.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 17:51:12 by sbednar          ###   ########.fr       */
+/*   Created: 2018/12/13 01:16:12 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/17 22:25:08 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_MATRIX_H
+# define FT_MATRIX_H
 
 # include <stdlib.h>
-# include <stdarg.h>
-# include "ft_token.h"
+# include <string.h>
 # include "libft.h"
 
-int	ft_printf(char const *f, ...);
+typedef struct	s_matrix
+{
+	char		*matrix;
+	int			cols;
+	int			rows;
+}				t_matrix;
+
+t_matrix		*ft_matrix_init(int rs, int cs);
+char			ft_matrix_get(t_matrix const *m, int const r, int const c);
+int				ft_matrix_set(t_matrix **m, int const r, int const c,
+								char const val);
+void			ft_matrix_delete(t_matrix **m);
+void			ft_matrix_print(t_matrix const *m);
 
 #endif

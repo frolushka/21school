@@ -3,26 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/16 00:49:43 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/17 18:08:51 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/20 21:10:41 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(char const *f, ...)
+int			ft_printf(char const *f, ...)
 {
-	va_list	va;
-	t_list	*toks;
-	char	*res;
+	va_list		va;
+	t_strlst	*res;
+	int			res_len;
 
-	if (!f || !(toks = ft_toks_get(f)))
+	if (!f)
 		return (0);
+	res = NULL;
 	va_start(va, f);
-	res = ft_toks_parse(f, toks);
+	for (int i = 0; i < 4; i++)
+		ft_strlst_add_new(&res, va_arg(va, char *));
 	va_end(va);
-	ft_lstdels(&toks);
-	return (ft_strlen(res));
+	res_len = ft_strlst_print(res);
+	ft_strlst_clear(&res);
+	return (res_len);
 }

@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_token_new.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:10 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/19 14:51:27 by sbednar          ###   ########.fr       */
+/*   Created: 2018/12/19 01:48:45 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/19 01:50:22 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-#define KRED	"\x1B[31m"
-#define KGRN	"\x1B[32m"
-#define KYEL	"\x1B[33m"
-#define KBLU	"\x1B[34m"
-#define KMAG	"\x1B[35m"
-#define KCYN	"\x1B[36m"
-#define KWHT	"\x1B[37m"
-#define KRST	"\x1B[0m"
-
-int main(int argc, char **argv)
+t_token	*ft_token_new(void *c, size_t csize)
 {
-	(void)argc;
-	ft_printf("f", argv[1], argv[2], argv[3], argv[4]);
-	return (0);
+	t_token	*res;
+
+	if (!(res = (t_token *)malloc(sizeof(*res))))
+		return (NULL);
+	if (!c)
+	{
+		res->content = NULL;
+		res->content_size = 0;
+	}
+	else
+	{
+		if (!(res->content = malloc(csize)))
+		{
+			free(res);
+			return (NULL);
+		}
+		ft_memcpy(res->content, c, csize);
+		res->content_size = csize;
+	}
+	res->next = NULL;
+	return (res);
 }

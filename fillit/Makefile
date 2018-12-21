@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
+#    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/04 23:49:07 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/17 21:50:16 by sbednar          ###   ########.fr        #
+#    Updated: 2018/12/19 01:04:02 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CFLAGS	= -O3 -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME) : $(LNAME) $(OBJ)
+$(NAME): $(LNAME) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(MAIN) -I. -I$(LDIR) -L$(LDIR) -lft -o $(NAME)
 
 $(LNAME):

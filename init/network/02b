@@ -1,0 +1,2 @@
+#!/bin/bash
+ifconfig en0 | grep "broadcast " | awk '{print $NF}' | ifconfig | arp -a | awk '{print $2}' | tr -d '()'

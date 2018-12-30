@@ -15,4 +15,4 @@ PROJECTS STATUS
 
 COMMENTS
 --------
-Special thx to sbednar for developing those projects
+Special thx to edraugr- for developing those projects

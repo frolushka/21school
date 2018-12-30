@@ -1,2 +1,1 @@
-#!/bin/bash
 ifconfig en0 | grep "ether " | awk '{print $NF}'

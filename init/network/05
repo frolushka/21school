@@ -1,2 +1,1 @@
-#!/bin/bash
 nslookup slash16.org | grep "Address: " | awk '{print $NF}'

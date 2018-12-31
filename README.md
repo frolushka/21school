@@ -11,8 +11,8 @@ PROJECTS STATUS
 | Piscine Reloaded | YES | 100/100 |
 | Libft | YES | 115/100 |
 | Get Next Line | YES | 125/100 |
-| Fill It | NO | - |
+| Fill It | YES | 100/100 |
 
 COMMENTS
 --------
-libft: ft_atoi doesn't work on tests like "000000000000000000005", wip
+Special thx to edraugr- for developing those projects

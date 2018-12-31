@@ -9,9 +9,10 @@ PROJECTS STATUS
 | :---------------- | :--------: | :---------------: |
 | 42 Commandements | YES | 100/100 |
 | Piscine Reloaded | YES | 100/100 |
-| Libft | YES | 115/100 |
+| Libft | YES | 123/100 |
 | Get Next Line | YES | 125/100 |
 | Fill It | YES | 100/100 |
+| Init | NO | - |
 
 COMMENTS
 --------

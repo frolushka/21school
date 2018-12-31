@@ -1,1 +1,2 @@
+# Name the command that lists the partition tables of drives?
 sudo fdisk -l

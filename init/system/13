@@ -1,1 +1,2 @@
+# Name the command that find, in real time, currently running processes
 ps -aux

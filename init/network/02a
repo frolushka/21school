@@ -1,1 +1,2 @@
+# Identify and display the Ethernet interface characteristics: Identify broadcast address
 ifconfig en0 | grep "broadcast " | awk '{print $NF}'

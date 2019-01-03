@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 01:23:51 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/03 12:27:41 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/03 22:04:15 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void inline	print_number_width(t_info *i)
 
 	if ((len = (int)ft_strlen(i->tmp)) <= i->pre)
 		len = i->pre;
-	if ((i->cfs & FLAG_neg) >= 1)
+	if ((i->cfs & (FLAG_neg | FLAG_plus | FLAG_space)) >= 1)
 		--i->wid;
 	ind = -1;
 	if (i->pre >= 0)
@@ -72,6 +72,11 @@ static void inline	prec_number(t_info *i)
 		free(i->tmp);
 		free(tmp);
 		i->tmp = res;
+	}
+	if (i->tmp[0] == '0' && i->pre == 0)
+	{
+		free(i->tmp);
+		i->tmp = ft_strdup("");
 	}
 }
 

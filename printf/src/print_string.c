@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 22:48:39 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/01 01:09:28 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/03 22:11:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ void				print_string(t_info *i)
 
 void	prep_string(t_info *i)
 {
-	if (i->cfs & FLAG_minus)
-		i->cfs |= FLAG_zero;
-	// SOME STRANGE PART
 	i->tmp = va_arg(i->va, char *);
 	i->tmp = (i->tmp != NULL ? ft_strdup(i->tmp) : NULL);
 	(i->tmp == NULL ? print_null(i) : print_string(i));

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 02:52:58 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/02 23:52:03 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/03 21:39:18 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void				set_flag(t_info *i, char const *f)
 		(f[i->ind] >= 'L' && f[i->ind] <= 'z' ? set_mod(i, f) : 0);
 		(f[i->ind] == '#') ? i->cfs |= FLAG_sharp : 0;
 		(f[i->ind] == '0') ? i->cfs |= FLAG_zero : 0;
+		(f[i->ind] == ' ') ? i->cfs |= FLAG_space : 0;
 		(f[i->ind] == '-') ? i->cfs |= FLAG_minus : 0;
 		(f[i->ind] == '+') ? i->cfs |= FLAG_plus : 0;
-		(f[i->ind] == ' ') ? i->cfs |= FLAG_space : 0;
 		if (f[i->ind] == '.')
 			set_prec(i, f);
 		else if (f[i->ind] >= '1' && f[i->ind] <= '9' && i->pre < 0)
@@ -71,4 +71,8 @@ void				set_flag(t_info *i, char const *f)
 		else
 			++i->ind;
 	}
+	if (i->cfs & FLAG_minus && i->cfs & FLAG_zero)
+		i->cfs &= ~FLAG_zero;
+	if (i->cfs & FLAG_plus && i->cfs & FLAG_space)
+		i->cfs &= ~FLAG_space;
 }

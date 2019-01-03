@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 22:31:46 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/02 18:25:16 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/03 21:26:28 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	prep_char(t_info *i)
 {
 	char	c;
 
-	if (i->cfs & FLAG_minus)
-		i->cfs |= FLAG_zero;
 	// SOME STRANGE PART
 	c = (char)va_arg(i->va, int);
 	i->tmp = ft_strnew(1);

@@ -1,31 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token_add.c                                     :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 01:51:01 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/19 01:51:50 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/26 10:25:09 by sbednar           #+#    #+#             */
+/*   Updated: 2019/01/02 02:18:31 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_token	*ft_token_add(t_token **head, t_token *node)
+static size_t inline	ft_intlen(int n)
 {
-	t_token	*cur;
+	size_t	res;
 
-	if (!head || !node)
+	res = 1;
+	while (n /= 10)
+		++res;
+	return (res);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*res;
+	size_t	e;
+
+	e = ft_nbrlen(n);
+	if (!(res = (char *)malloc(e + 1)))
 		return (NULL);
-	if (!*head)
-		*head = node;
-	else
+	res[e--] = '\0';
+	if (n < 0)
 	{
-		cur = *head;
-		while (cur->next)
-			cur = cur->next;
-		cur->next = node;
+		res[0] = '-';
+		if (n == INT_MIN)
+		{
+			res[e--] = '8';
+			n /= 10;
+		}
+		n *= -1;
 	}
-	return (node);
+	res[e--] = n % 10 + '0';
+	while (n /= 10)
+		res[e--] = n % 10 + '0';
+	return (res);
 }

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlst_clear.c                                  :+:      :+:    :+:   */
+/*   parse_tags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 01:32:19 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/19 01:35:26 by sbednar          ###   ########.fr       */
+/*   Created: 2019/01/02 03:01:08 by sbednar           #+#    #+#             */
+/*   Updated: 2019/01/02 03:02:49 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_strlst_clear(t_strlst **head)
-{
-	t_strlst	*cur;
-	t_strlst	*tmp;
+// void	set_tag(char const *fmt, t_info *i)
+// {
+// 	int	ind;
+// 	int tmp;
 
-	if (!head || !*head)
-		return ;
-	cur = *head;
-	while (cur)
-	{
-		tmp = cur->next;
-		free(cur->val);
-		free(cur);
-		cur = tmp;
-	}
-	*head = NULL;
-}
+// 	e->tag.tag = 0;
+// 	i = 0;
+// 	if (fmt[e->i] >= '0' && fmt[e->i] <= '9')
+// 	{
+// 		tmp = ft_atoi(fmt + e->i);
+// 		while (fmt[e->i + i] >= '0' && fmt[e->i + i] <= '9')
+// 			i++;
+// 		if (fmt[e->i + i] == '$')
+// 		{
+// 			e->tag.tag = 1;
+// 			e->tag.pos = tmp;
+// 			e->i += i + 1;
+// 		}
+// 	}
+// }

@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token_new.c                                     :+:      :+:    :+:   */
+/*   ft_ultoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 01:48:45 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/19 01:50:22 by sbednar          ###   ########.fr       */
+/*   Created: 2019/01/01 01:21:49 by sbednar           #+#    #+#             */
+/*   Updated: 2019/01/02 19:09:38 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_token	*ft_token_new(void *c, size_t csize)
+static size_t inline	ft_ulonglen(unsigned long long n, int base)
 {
-	t_token	*res;
+	size_t	res;
 
-	if (!(res = (t_token *)malloc(sizeof(*res))))
+	res = 1;
+	while (n /= base)
+		++res;
+	return (res);
+}
+
+char					*ft_ultoa_base(unsigned long long n, int base)
+{
+	char	*res;
+	size_t	e;
+
+	e = ft_ulonglen(n, base);
+	if (!(res = (char *)malloc(e + 1)))
 		return (NULL);
-	if (!c)
-	{
-		res->content = NULL;
-		res->content_size = 0;
-	}
-	else
-	{
-		if (!(res->content = malloc(csize)))
-		{
-			free(res);
-			return (NULL);
-		}
-		ft_memcpy(res->content, c, csize);
-		res->content_size = csize;
-	}
-	res->next = NULL;
+	res[e--] = '\0';
+	res[e--] = n % base > 9 ? n % base - 10 + 'A' : n % base + '0';
+	while (n /= base)
+		res[e--] = n % base > 9 ? n % base - 10 + 'A' : n % base + '0';
 	return (res);
 }

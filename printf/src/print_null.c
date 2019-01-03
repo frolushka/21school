@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_null.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/19 01:37:13 by sbednar          ###   ########.fr       */
+/*   Created: 2018/12/30 00:08:53 by sbednar           #+#    #+#             */
+/*   Updated: 2019/01/01 21:49:24 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include "libft.h"
+void inline	print_null(t_info *i)
+{
+	int len;
 
-int	ft_printf(char const *f, ...);
-
-#endif
+	len = (i->pre < 0 ? 6 : i->pre);
+	while (i->wid-- > len)
+		i->len += write(i->fd, (i->cfs & FLAG_zero ? "0" : " "), 1);
+	i->len += write(i->fd, "(null)", len);
+	++i->ind;
+}

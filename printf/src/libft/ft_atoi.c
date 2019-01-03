@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlst_print.c                                  :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 01:31:55 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/19 01:35:11 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/25 16:14:24 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/29 13:22:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlst_print(t_strlst *head)
+int				ft_atoi(char const *str)
 {
-	t_strlst	*cur;
-	int			res;
+	int			sign;
 	int			i;
+	long long	res;
+	long long	prev;
 
-	if (!head)
-		return (0);
-	cur = head;
+	sign = 1;
+	i = 0;
 	res = 0;
-	while (cur)
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		++i;
+	if (str[i] == '-')
 	{
-		i = -1;
-		while (cur->val[++i])
-			write(1, &(cur->val[i]), 1);
-		res += i;
-		cur = cur->next;
+		sign = -1;
+		++i;
+	}
+	else if (str[i] == '+')
+		++i;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		prev = res * 10 + (str[i++] - '0') * sign;
+		if ((sign > 0 && prev < res) || (sign < 0 && prev > res))
+			return (sign > 0 ? -1 : 0);
+		res = prev;
 	}
 	return (res);
 }

@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlst_add_substr.c                             :+:      :+:    :+:   */
+/*   ft_strlow.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 01:24:35 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/19 01:35:36 by sbednar          ###   ########.fr       */
+/*   Created: 2019/01/01 21:30:33 by sbednar           #+#    #+#             */
+/*   Updated: 2019/01/01 21:31:59 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_strlst	*ft_strlst_add_substr(t_strlst **head, char *val,
-			unsigned int start, size_t len)
+void	ft_strlow(char *s)
 {
-	t_strlst	*res;
+	size_t	i;
 
-	if (!(res = ft_strlst_new(ft_strsub(val, start, len))))
-		return (NULL);
-	ft_strlst_add(head, res);
-	return (res);
+	i = -1;
+	while (s[++i])
+		s[i] = ft_tolower(s[i]);
 }

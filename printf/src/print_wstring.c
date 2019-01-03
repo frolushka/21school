@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   print_wstring.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 10:25:09 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/26 10:45:38 by sbednar          ###   ########.fr       */
+/*   Created: 2018/12/28 21:15:03 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/28 21:18:13 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_itoa(int n)
+static int	get_wstring_len(wchar_t *ws)
 {
-	char	*res;
-	size_t	e;
+	int	i;
+	int	res;
 
-	e = ft_nbrlen(n);
-	if (!(res = (char *)malloc(e + 1)))
-		return (NULL);
-	res[e--] = '\0';
-	if (n < 0)
+	i = -1;
+	res = 0;
+	while (ws[++i])
 	{
-		res[0] = '-';
-		if (n == -2147483648)
-		{
-			res[e--] = '8';
-			n /= 10;
-		}
-		n *= -1;
+		if (ws[i] <= 0x7F)
+			++res;
+		else if (ws[i] <= 0x7FF)
+			res += 2;
+		else if (ws[i] <= 0xFFFF)
+			res += 3;
+		else if (ws[i] <= 0x10FFFF)
+			res += 4;
 	}
-	res[e--] = n % 10 + '0';
-	while (n /= 10)
-		res[e--] = n % 10 + '0';
 	return (res);
+}
+
+void		print_wstring(t_info *i, wchar_t *ws)
+{
+
 }

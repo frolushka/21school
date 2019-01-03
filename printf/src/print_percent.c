@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
+/*   print_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 10:30:44 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 11:55:03 by sbednar          ###   ########.fr       */
+/*   Created: 2018/12/30 00:41:58 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/30 00:44:01 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_nbrlen(int nbr)
+void	print_percent(t_info *i)
 {
-	size_t	res;
-
-	res = 1;
-	if (nbr < 0)
-		++res;
-	while (nbr /= 10)
-		++res;
-	return (res);
+	if (i->cfs & FLAG_minus)
+	{
+		i->len += write(i->fd, "%", 1);
+		while (i->wid-- > 1)
+			i->len += write(i->fd, " ", 1);
+	}
+	else
+	{
+		while (i->wid-- > 1)
+			i->len += write(i->fd, (i->cfs & FLAG_zero ? "0" : " "), 1);
+		i->len += write(i->fd, "%", 1);
+	}
+	++i->ind;
 }

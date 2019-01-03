@@ -1,2 +1,0 @@
-# Find the IP that was assigned to you by dhcp server
-ipconfig getoption en0 server_identifier

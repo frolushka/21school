@@ -1,0 +1,2 @@
+# Find the command that list all packages
+dpkg -l

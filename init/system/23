@@ -1,0 +1,2 @@
+# Explain how connect yourself as new user. (With graphic session and ssh session)
+Connect via ssh (ssh root@ip) and just create new user (adduser username)

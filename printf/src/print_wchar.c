@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_wchar.c                                      :+:      :+:    :+:   */
+/*   print_wchar.wc                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 21:00:55 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/28 21:19:35 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/04 03:08:29 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,28 @@ static void inline	put_char(t_info *i, char c)
 	i->len += write(i->fd, &c, 1);
 }
 
-static void			put_wchar(t_info *i, char c)
+static void			put_wchar(t_info *i, wchar_t wc)
 {
-	if (c <= 0x7F)
-		put_char(i, c);
-	else if (c <= 0x7FF)
+	if (wc <= 0x7F)
+		put_char(i, wc);
+	else if (wc <= 0x7FF)
 	{
-		put_char(i, (c >> 6) + 0xC0);
-		put_char(i, (c & 0x3F) + 0x80);
+		put_char(i, (wc >> 6) + 0xC0);
+		put_char(i, (wc & 0x3F) + 0x80);
 	}
-	else if (c <= 0xFFFF)
+	else if (wc <= 0xFFFF)
 	{
-		put_char(i, ((c >> 12) + 0xE0));
-		put_char(i, ((c >> 6) & 0x3F) + 0x80);
-		put_char(i, (c & 0x3F) + 0x80);
+		put_char(i, ((wc >> 12) + 0xE0));
+		put_char(i, ((wc >> 6) & 0x3F) + 0x80);
+		put_char(i, (wc & 0x3F) + 0x80);
 	}
-	else if (c <= 0x10FFFF)
+	else if (wc <= 0x10FFFF)
 	{
-		put_char(i, (c >> 18) + 0xF0);
-		put_char(i, ((c >> 12) & 0x3F) + 0x80);
-		put_char(i, ((c >> 6) & 0x3F) + 0x80);
-		put_char(i, (c & 0x3F) + 0x80);
+		put_char(i, (wc >> 18) + 0xF0);
+		put_char(i, ((wc >> 12) & 0x3F) + 0x80);
+		put_char(i, ((wc >> 6) & 0x3F) + 0x80);
+		put_char(i, (wc & 0x3F) + 0x80);
 	}
-	++i->len;
 }
 
 void				print_wchar(t_info *i, wchar_t wc)

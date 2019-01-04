@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/31 20:35:25 by sbednar           #+#    #+#              #
-#    Updated: 2019/01/02 18:12:27 by sbednar          ###   ########.fr        #
+#    Updated: 2019/01/04 03:04:19 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC_FT		=	ft_memset.c \
 				ft_strncat.c \
 				ft_strlcat.c \
 				ft_strchr.c \
+				ft_strnchr.c \
 				ft_strrchr.c \
 				ft_strstr.c \
 				ft_strnstr.c \
@@ -104,7 +105,8 @@ SRC			= 	ft_printf.c \
 				print_address.c \
 				print_null.c \
 				print_number.c \
-				print_unumber.c
+				print_unumber.c \
+				print_wchar.c
 OBJ			=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 CC			=	gcc

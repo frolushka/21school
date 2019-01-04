@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/02 23:51:30 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/04 03:04:04 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void				print_null(t_info *i);
 
 void				print_number(t_info *i);
 void				print_unumber(t_info *i);
+
+void				print_wchar(t_info *i, wchar_t wc);
 
 void				print_percent(t_info *i);
 

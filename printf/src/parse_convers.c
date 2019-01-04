@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 01:30:26 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/03 00:03:42 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/03 22:37:08 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,15 @@ void		set_spec(t_info *i, char const *f)
 		(f[i->ind] == 'P' ? i->cfs |= FLAG_up : 0);
 		prep_address(i);
 	}
-	else if (f[i->ind] == 'd' || f[i->ind] == 'i')
+	else if (f[i->ind] == 'd' || f[i->ind] == 'D' || f[i->ind] == 'i')
+	{
+		(f[i->ind] == 'D' ? i->cfs |= FLAG_l : 0);
 		prep_number(i);
+	}
 	else if (f[i->ind] == 'o' || f[i->ind] == 'O')
 	{
 		i->bas = 8;
+		(f[i->ind] == 'O' ? i->cfs |= FLAG_l : 0);
 		prep_unumber(i);
 	}
 	else if (f[i->ind] == 'u' || f[i->ind] == 'U')

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 02:52:58 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/03 21:39:18 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/03 22:31:11 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void				set_flag(t_info *i, char const *f)
 		else
 			++i->ind;
 	}
-	if (i->cfs & FLAG_minus && i->cfs & FLAG_zero)
+	if (i->pre != -1 || (i->cfs & FLAG_minus && i->cfs & FLAG_zero))
 		i->cfs &= ~FLAG_zero;
 	if (i->cfs & FLAG_plus && i->cfs & FLAG_space)
 		i->cfs &= ~FLAG_space;

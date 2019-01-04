@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 18:00:01 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/03 22:08:08 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/04 02:09:20 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void inline	print_number_sign(t_info *i)
 {
-	if (i->cfs & FLAG_sharp && i->bas == 8 && i->tmp[0] != '0')
+	if (i->cfs & FLAG_sharp && i->bas == 8)
 		i->len += write(i->fd, "0", 1);
 	if (i->pre == 0)
 		return ;
-	if (i->cfs & FLAG_sharp && i->bas == 16 && i->tmp[0] != '0')
+	if (i->cfs & FLAG_sharp && i->bas == 16)
 		i->len += write(i->fd, i->cfs & FLAG_up ? "0X" : "0x", 2);
 }
 
@@ -74,8 +74,9 @@ static void inline	prec_number(t_info *i)
 
 void				print_unumber(t_info *i)
 {
-	(i->cfs & FLAG_sharp && i->bas == 8 && i->tmp[0] != '0' ? --i->wid : 0);
-	if (i->cfs & FLAG_sharp && i->bas == 16 && i->tmp[0] != '0')
+	if (i->cfs & FLAG_sharp && i->bas == 8)
+		--i->wid;
+	if (i->cfs & FLAG_sharp && i->bas == 16)
 		i->wid -= 2;
 	if (i->cfs & FLAG_zero)
 	{

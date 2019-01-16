@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 22:48:39 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/03 22:11:51 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/09 17:02:43 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ void				print_string(t_info *i)
 
 void	prep_string(t_info *i)
 {
+	wchar_t	*tmp;
+
+	if (i->cfs & FLAG_l)
+	{
+		tmp = va_arg(i->va, wchar_t *);
+		(tmp == NULL ? print_null(i) : print_wstring(i, tmp));
+		return ;
+	}
 	i->tmp = va_arg(i->va, char *);
 	i->tmp = (i->tmp != NULL ? ft_strdup(i->tmp) : NULL);
 	(i->tmp == NULL ? print_null(i) : print_string(i));

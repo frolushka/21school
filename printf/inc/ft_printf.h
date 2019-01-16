@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/16 00:47:30 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/04 03:04:04 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/09 17:36:53 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,10 @@ typedef struct		s_info
 	int				ind;
 	int				bas;
 	int				len;
+	int				sys1;
 }					t_info;
 
 # define FLAGS		"0123456789hljz#-+. "
-# define PREC		"fageFAGE"
-# define NUMBER		"diouxX"
-
-// # define CONV_c		1
-// # define CONV_s 	1 << 1
-// # define CONV_p 	1 << 2
-// # define CONV_d 	1 << 3
-// # define CONV_i 	1 << 4
-// # define CONV_o 	1 << 5
-// # define CONV_u 	1 << 6
-// # define CONV_x 	1 << 7
-// # define CONV_X 	1 << 8
-// # define CONV_f		1 << 9
 
 # define FLAG_h		1
 # define FLAG_hh	(1u << 1)
@@ -76,6 +64,7 @@ void				prep_address(t_info *i);
 void				prep_number(t_info *i);
 void				prep_unumber(t_info *i);
 
+
 void				print_char(t_info *i);
 void				print_string(t_info *i);
 void				print_address(t_info *i);
@@ -84,7 +73,13 @@ void				print_null(t_info *i);
 void				print_number(t_info *i);
 void				print_unumber(t_info *i);
 
+void				prep_wchar(t_info *i);
 void				print_wchar(t_info *i, wchar_t wc);
+void				put_wchar(t_info *i, wchar_t wc);
+
+void				prep_wchar(t_info *i);
+void				print_wstring(t_info *i, wchar_t *ws);
+void				put_wstring(t_info *i, wchar_t *ws);
 
 void				print_percent(t_info *i);
 

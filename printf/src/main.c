@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/16 00:47:10 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/04 03:17:55 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/08 16:37:52 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int main(void)
 	// a = printf("%d\t%i\t%o\t%d\t%u\t%d\t%lld\t%lld\n", 0, -10, INT_MAX, INT_MIN, LONG_MIN, LONG_MAX);
 	// b = ft_printf("%d\t%i\t%o\t%d\t%u\t%d\t%lld\t%lld\n", 0, -10, INT_MAX, INT_MIN, LONG_MIN, LONG_MAX);
 	// 	printf("%d %d\n", a, b);
-	int a = ft_printf("!%-63lc!\n", 248);
-	printf("%d", a);
+	// int a = ft_printf("42%.62s42\n", L"(null)");
+	int b = ft_printf("@moulitest: %#.o %#.0o", 0, 0);
 	// b = ft_printf("%lld\n", -9223372036854775808);
 	// printf("%d %d\n", a, b);
 	return (0);

@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/31 20:35:25 by sbednar           #+#    #+#              #
-#    Updated: 2019/01/04 03:04:19 by sbednar          ###   ########.fr        #
+#    Updated: 2019/01/08 16:34:24 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,8 @@ SRC			= 	ft_printf.c \
 				print_null.c \
 				print_number.c \
 				print_unumber.c \
-				print_wchar.c
+				print_wchar.c \
+				print_wstring.c
 OBJ			=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 CC			=	gcc
@@ -122,10 +123,10 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:$(SRC_FT_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -o $@ -c $<
+	$(CC) -o3 $(CFLAGS) -I$(INC_DIR) -o $@ -c $<
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -o $@ -c $<
+	$(CC) -o3 $(CFLAGS) -I$(INC_DIR) -o $@ -c $<
 
 debug: all
 	$(CC) $(CFLAGS) src/main.c -I$(INC_DIR) -L. -lftprintf

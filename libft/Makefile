@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 23:40:02 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/13 02:16:04 by sbednar          ###   ########.fr        #
+#    Updated: 2018/12/29 13:18:38 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ CFLAGS	= -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	ar rcs $@ $<
 
 %.o:%.c
 	$(CC) $(CFLAGS) -I . -o $@ -c $<

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 01:30:26 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/03 22:37:08 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/09 17:35:32 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ void		set_spec(t_info *i, char const *f)
 		print_percent(i);
 	else if (f[i->ind] == 'c')
 		prep_char(i);
+	else if (f[i->ind] == 'C')
+		prep_wchar(i);
 	else if (f[i->ind] == 's')
 		prep_string(i);
+	else if (f[i->ind] == 'S')
+	 	prep_wstring(i);
 	else if (f[i->ind] == 'p' || f[i->ind] == 'P')
 	{
 		(f[i->ind] == 'P' ? i->cfs |= FLAG_up : 0);
@@ -62,6 +66,12 @@ void		set_spec(t_info *i, char const *f)
 	{
 		i->bas = 16;
 		(f[i->ind] == 'X' ? i->cfs |= FLAG_up : 0);
+		prep_unumber(i);
+	}
+	else if (f[i->ind] == 'b' || f[i->ind] == 'B')
+	{
+		i->bas = 2;
+		(f[i->ind] == 'B' ? i->cfs |= FLAG_up : 0);
 		prep_unumber(i);
 	}
 	// else if ((f[i->ind] == 'd' || f[i->ind] == 'i') && !(i->cfs & FLAG_z))

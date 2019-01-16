@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 18:00:01 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/04 02:09:20 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/09 17:36:12 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static void inline	print_number_sign(t_info *i)
 {
 	if (i->cfs & FLAG_sharp && i->bas == 8)
 		i->len += write(i->fd, "0", 1);
-	if (i->pre == 0)
-		return ;
 	if (i->cfs & FLAG_sharp && i->bas == 16)
 		i->len += write(i->fd, i->cfs & FLAG_up ? "0X" : "0x", 2);
+	if (i->cfs & FLAG_sharp && i->bas == 2)
+		i->len += write(i->fd, i->cfs & FLAG_up ? "0B" : "0b", 2);
 }
 
 static void inline	print_number_width(t_info *i)
@@ -29,10 +29,12 @@ static void inline	print_number_width(t_info *i)
 
 	if ((len = (int)ft_strlen(i->tmp)) <= i->pre)
 		len = i->pre;
+	if ((i->cfs & (FLAG_plus | FLAG_space)) >= 1)
+		--i->wid;
 	ind = -1;
 	if (i->pre >= 0)
 	{
-		while (i->wid > len + ++ind)
+		while (i->wid - (i->bas == 8 && i->cfs & FLAG_sharp ? 1 : 0) - (i->bas == 16 && i->cfs & FLAG_sharp ? 2 : 0) > len + ++ind)
 			i->len += write(i->fd, " ", 1);
 		ind = (int)ft_strlen(i->tmp) - 1;
 		while (++ind < len)
@@ -40,7 +42,7 @@ static void inline	print_number_width(t_info *i)
 	}
 	else
 	{
-		while (i->wid > len + ++ind)
+		while (i->wid - (i->bas == 8 && i->cfs & FLAG_sharp ? 1 : 0) - (i->bas == 16 && i->cfs & FLAG_sharp ? 2 : 0) > len + ++ind)
 			i->len += write(i->fd, i->cfs & FLAG_zero ? "0" : " ", 1);
 	}
 }
@@ -55,6 +57,15 @@ static void inline	prec_number(t_info *i)
 	ind = -1;
 	len = (int)ft_strlen(i->tmp);
 	res = i->tmp;
+	if (i->cfs & FLAG_sharp && i->bas == 8 && i->pre > 0)
+		--i->pre;
+	// else if (i->cfs & FLAG_sharp && i->bas == 16)
+	// 	i->pre -= 2;
+	else if (i->pre == 0)
+	{
+		free(i->tmp);
+		i->tmp = ft_strdup("");
+	}
 	if (i->pre > len)
 	{
 		tmp = ft_strnew(i->pre - len);
@@ -65,19 +76,10 @@ static void inline	prec_number(t_info *i)
 		free(tmp);
 		i->tmp = res;
 	}
-	if (i->pre == 0)
-	{
-		free(i->tmp);
-		i->tmp = ft_strdup("");
-	}
 }
 
 void				print_unumber(t_info *i)
 {
-	if (i->cfs & FLAG_sharp && i->bas == 8)
-		--i->wid;
-	if (i->cfs & FLAG_sharp && i->bas == 16)
-		i->wid -= 2;
 	if (i->cfs & FLAG_zero)
 	{
 		print_number_sign(i);
@@ -103,23 +105,25 @@ void				print_unumber(t_info *i)
 
 void				prep_unumber(t_info *i)
 {
+	long	pre;
 	long	tmp;
 
-	tmp = va_arg(i->va, long);
+	pre = va_arg(i->va, long);
+	(pre == 0 && i->bas != 8 ? i->cfs &= ~FLAG_sharp : 0);
 	if (i->cfs & FLAG_j)
-		i->tmp = ft_ultoa_base((uintmax_t)tmp, i->bas);
+		i->tmp = ft_ultoa_base(tmp = (uintmax_t)pre, i->bas);
 	else if (i->cfs & FLAG_z)
-		i->tmp = ft_ultoa_base((size_t)tmp, i->bas);
+		i->tmp = ft_ultoa_base(tmp = (size_t)pre, i->bas);
 	else if (i->cfs & FLAG_ll)
-		i->tmp = ft_ultoa_base((unsigned long long)tmp, i->bas);
+		i->tmp = ft_ultoa_base(tmp = (unsigned long long)pre, i->bas);
 	else if (i->cfs & FLAG_l)
-		i->tmp = ft_ultoa_base((unsigned long)tmp, i->bas);
+		i->tmp = ft_ultoa_base(tmp = (unsigned long)pre, i->bas);
 	else if (i->cfs & FLAG_h)
-		i->tmp = ft_ultoa_base((unsigned short)tmp, i->bas);
+		i->tmp = ft_ultoa_base(tmp = (unsigned short)pre, i->bas);
 	else if (i->cfs & FLAG_hh)
-		i->tmp = ft_ultoa_base((unsigned char)tmp, i->bas);
+		i->tmp = ft_ultoa_base(tmp = (unsigned char)pre, i->bas);
 	else
-		i->tmp = ft_ultoa_base((unsigned int)tmp, i->bas);
+		i->tmp = ft_ultoa_base(tmp = (unsigned int)pre, i->bas);
 	if (!(i->cfs & FLAG_up))
 		ft_strlow(i->tmp);
 	prec_number(i);

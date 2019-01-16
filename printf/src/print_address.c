@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/30 00:20:08 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/02 18:47:44 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/06 20:16:49 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void inline	preс_address(t_info *i)
 		free(tmp);
 	}
 	if (i->cfs & FLAG_sharp)
-	i->tmp = ft_strjoin((i->cfs & FLAG_up ? "0X" : "0x"), res);
+		i->tmp = ft_strjoin((i->cfs & FLAG_up ? "0X" : "0x"), res);
 	free(res);
 }
 
@@ -68,7 +68,7 @@ void				prep_address(t_info *i)
 
 	tmp = va_arg(i->va, long);
 	if (i->pre == 0)
-		i->tmp = ft_strdup("\0");
+		i->tmp = ft_strdup("");
 	else
 		i->tmp = ft_ultoa_base((unsigned long)tmp, 16);
 	if (i->cfs & FLAG_zero && i->pre == -1)

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 00:06:24 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/16 00:13:44 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/17 14:09:05 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ t_vec2	*check_valid(int fd)
 
 	if (!(s = vec2_new(0, 0)))
 		return (NULL);
-	while (get_next_line())
-	{
-
-	}
 	return (NULL);
 }
 

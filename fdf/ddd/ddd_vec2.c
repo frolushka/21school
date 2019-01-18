@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/22 03:29:42 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/16 00:04:45 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/17 14:09:13 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_vec2	*vec2_init(void)
 {
 	t_vec2	*vr;
 
-	if (!(vr = (t_vec2 *)malloc(sizeof(*vr))))
+	if (!(vr = (t_vec2 *)ft_memalloc(sizeof(*vr))))
 		return (NULL);
 	return (vr);
 }

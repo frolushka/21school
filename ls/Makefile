@@ -6,9 +6,26 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/31 20:35:25 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/31 21:11:32 by sbednar          ###   ########.fr        #
+#    Updated: 2019/01/22 04:00:33 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# Flags description:
+#
+# -l      (The lowercase letter ``ell''.)  List in long format.  (See
+#         below.)  If the output is to a terminal, a total sum for all the
+#         file sizes is output on a line before the long listing.
+#
+# -R      Recursively list subdirectories encountered.
+#
+# -a      Include directory entries whose names begin with a dot (.).
+#
+# -r      Reverse the order of the sort to get reverse lexicographical
+#         order or the oldest entries first (or largest files last, if com-
+#         bined with sort by size
+#
+# -t      Sort by time modified (most recently modified first) before sort-
+#         ing the operands by lexicographical order.
 
 NAME		=	ft_ls
 
@@ -23,12 +40,13 @@ FT_INC_DIR	=	$(addprefix $(FT_DIR)/,inc)
 FT			=	$(addprefix $(FT_DIR)/,libft.a)
 
 SRC			= 	ft_ls.c \
+				utils.c \
 				main.c
 OBJ			=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 CC			=	gcc
 #CFLAGS		=	-Wall -Wextra -Werror
-CFLAGS		=
+CFLAGS		=	-g
 
 all: $(NAME)
 

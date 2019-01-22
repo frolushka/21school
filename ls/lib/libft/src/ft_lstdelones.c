@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 23:35:56 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/10 20:30:54 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/22 03:35:31 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_lstdelones(t_list **alst)
 {
-	if (!alst)
+	if (!alst || !*alst)
 		return ;
 	free((*alst)->content);
 	free(*alst);

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:51:41 by sbednar           #+#    #+#             */
-/*   Updated: 2018/12/13 02:15:15 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/22 00:58:48 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void				ft_lstinsert(t_list **a, t_list *n,
+						int (*c)(void *n1, void *n2));
 
 int					ft_islower(int c);
 int					ft_isupper(int c);

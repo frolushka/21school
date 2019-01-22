@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   flag_l.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 12:11:14 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 16:26:00 by sbednar          ###   ########.fr       */
+/*   Created: 2019/01/22 04:03:53 by sbednar           #+#    #+#             */
+/*   Updated: 2019/01/22 13:55:01 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_ls.h"
 
-void	*ft_memchr(void const *s, int c, size_t n)
+int	print_flag_l(t_dir *dir, int flags)
 {
-	char	*cs;
-	size_t	i;
 
-	cs = (char *)s;
-	i = -1;
-	while (++i < n)
-	{
-		if ((unsigned char)cs[i] == (unsigned char)c)
-			return ((void *)(&cs[i]));
-	}
-	return (NULL);
 }

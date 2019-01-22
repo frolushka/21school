@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 23:40:02 by sbednar           #+#    #+#              #
-#    Updated: 2018/12/31 20:55:49 by sbednar          ###   ########.fr        #
+#    Updated: 2019/01/22 01:06:03 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ SRC		=	ft_memset.c \
 			ft_lstadd_back.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
+			ft_lstinsert.c \
 			ft_islower.c \
 			ft_isupper.c \
 			ft_isstn.c \
@@ -91,7 +92,7 @@ SRC		=	ft_memset.c \
 OBJ		= 	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 CC 		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra -g
 
 all: $(NAME)
 

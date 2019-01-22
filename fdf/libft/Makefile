@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
+#    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 23:40:02 by sbednar           #+#    #+#              #
-#    Updated: 2019/01/16 00:03:58 by sbednar          ###   ########.fr        #
+#    Updated: 2019/01/16 15:46:40 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,8 @@ CFLAGS	=	-Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $@ $<
+	ar rc $@ $<
+	ranlib $@
 
 %.o:%.c
 	$(CC) $(CFLAGS) -I. -o $@ -c $<

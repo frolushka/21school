@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
+#    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/19 14:55:12 by edraugr-          #+#    #+#              #
-#    Updated: 2019/01/15 23:56:20 by sbednar          ###   ########.fr        #
+#    Updated: 2019/01/16 15:45:40 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ INC		=	-I. -I../libft -I../mlx
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 %.o:%.c
 	$(CC) $(CFLAGS) $(INC) -o $@ -c $<

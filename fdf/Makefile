@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
+#    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/06 16:23:16 by sbednar           #+#    #+#              #
-#    Updated: 2019/01/16 00:03:29 by sbednar          ###   ########.fr        #
+#    Updated: 2019/01/17 22:18:06 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ DDD_DIR		=	./ddd
 MLX_DIR		=	./mlx
 FT_DIR		=	./libft
 
-SRC			= 	main.c
+SRC			= 	main.c \
+				reader.c
 OBJ			=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 INCS		=	-I./src -I./ddd -I./mlx -I./libft
@@ -30,7 +31,7 @@ CC			=	gcc
 CFLAGS		=	-o1
 
 all: $(NAME)
-	@echo "\033[92m\033[1mALL DONE\033[0m\033[0m"
+	@echo "\033[92m\033[1m---> ALL DONE\033[0m\033[0m"
 
 $(NAME):
 	@echo "\033[91m\033[1m[1/6] \033[97m\033[1mddd all:\033[0m"
@@ -44,7 +45,7 @@ $(NAME):
 	@echo "\033[91m\033[1m[5/6] \033[97m\033[1mc files compile:\033[0m"
 	@$(MAKE) $(OBJ)
 	@echo "\033[91m\033[1m[6/6] \033[97m\033[1mexecutable compile:\033[0m"
-	$(CC) $(CFLAGS) $(INCS) $(LIBS) $(OBJ)
+	$(CC) $(CFLAGS) $(INCS) $(LIBS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INCS) -o $@ -c $<
@@ -58,7 +59,7 @@ clean:
 	@$(MAKE) -C $(FT_DIR) clean
 	@echo "\033[91m\033[1m[4/4] \033[97m\033[1mobjects folder delete:\033[0m"
 	rm -rf $(OBJ_DIR)
-	@echo "\033[92m\033[1mCLEAN DONE\033[0m\033[0m"
+	@echo "\033[92m\033[1m---> CLEAN DONE\033[0m\033[0m"
 
 fclean: clean
 	@echo "\033[91m\033[1m[1/4] \033[97m\033[1mddd full clean:\033[0m"
@@ -69,9 +70,9 @@ fclean: clean
 	@$(MAKE) -C $(FT_DIR) clean
 	@echo "\033[91m\033[1m[4/4] \033[97m\033[1mexecutable delete:\033[0m"
 	rm -f $(NAME)
-	@echo "\033[92m\033[1mFCLEAN DONE\033[0m\033[0m"
+	@echo "\033[92m\033[1m---> FCLEAN DONE\033[0m\033[0m"
 
 re: fclean all
-	@echo "\033[92m\033[1mRE DONE\033[0m\033[0m"
+	@echo "\033[92m\033[1m---> RE DONE\033[0m\033[0m"
 
 .PHONY: all clean fclean re

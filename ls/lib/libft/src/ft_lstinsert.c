@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstinsert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 00:52:06 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/22 13:59:46 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/23 01:23:59 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <dirent.h>
 #include <stdio.h>
+
+/*	1	n1 > n2
+ *	0	n1 == n2
+ *	-1	n1 < n2
+ */
 
 void	ft_lstinsert(t_list **alst, t_list *node,
 	int (*comp)(void *n1, void *n2))
@@ -24,17 +29,17 @@ void	ft_lstinsert(t_list **alst, t_list *node,
 	if (!*alst)
 		*alst = node;
 	else if (comp((*alst)->content, node->content) > 0)
-	else
 	{
 		cur = *alst;
-		while (cur->next && comp(cur->content, node->content) < 0)
+		while (cur->next && comp(cur->content, node->content) > 0)
 			cur = cur->next;
-		if (comp(cur->content, node->content) > 0)
-		{
-			// TODO
-		}
 		node->next = cur->next;
 		cur->next = node;
+	}
+	else
+	{
+		node->next = *alst;
+		*alst = node;
 	}
 	// printf("lst now:\n");
 	// cur = *alst;

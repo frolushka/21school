@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstdels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 23:18:53 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/27 05:48:46 by sbednar          ###   ########.fr       */
+/*   Created: 2018/11/27 23:34:33 by sbednar           #+#    #+#             */
+/*   Updated: 2018/12/10 20:30:57 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <stdio.h>
+#include "libft.h"
 
-# include "libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-
-# define EOF (-1)
-# define BUFF_SIZE 32
-
-int	get_next_line(int const fd, char **line);
-
-#endif
+void	ft_lstdels(t_list **alst)
+{
+	if (!alst || !(*alst))
+		return ;
+	if ((*alst)->next)
+		ft_lstdels(&((*alst)->next));
+	ft_lstdelones(alst);
+}

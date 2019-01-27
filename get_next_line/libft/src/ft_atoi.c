@@ -6,34 +6,18 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:14:24 by sbednar           #+#    #+#             */
-/*   Updated: 2018/11/27 21:43:37 by sbednar          ###   ########.fr       */
+/*   Updated: 2018/12/29 13:22:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_nbrlen_atoi(char const *str)
-{
-	size_t	res;
-	size_t	i;
-
-	res = 0;
-	i = 0;
-	while (str[i] && !ft_isdigit(str[i]))
-		++i;
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		++i;
-		++res;
-	}
-	return (res);
-}
-
 int				ft_atoi(char const *str)
 {
-	int	sign;
-	int	i;
-	int	res;
+	int			sign;
+	int			i;
+	long long	res;
+	long long	prev;
 
 	sign = 1;
 	i = 0;
@@ -47,9 +31,12 @@ int				ft_atoi(char const *str)
 	}
 	else if (str[i] == '+')
 		++i;
-	if (ft_nbrlen_atoi(&str[i]) > 19)
-		return (sign > 0 ? -1 : 0);
 	while (str[i] >= '0' && str[i] <= '9')
-		res = res * 10 + (str[i++] - '0') * sign;
+	{
+		prev = res * 10 + (str[i++] - '0') * sign;
+		if ((sign > 0 && prev < res) || (sign < 0 && prev > res))
+			return (sign > 0 ? -1 : 0);
+		res = prev;
+	}
 	return (res);
 }

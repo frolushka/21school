@@ -12,7 +12,7 @@ PROJECTS STATUS
 | Libft | YES | 123/100 |
 | Get Next Line | YES | 125/100 |
 | Fill It | YES | 100/100 |
-| Init | NO | - |
+| Init | YES | 99/100 |
 
 COMMENTS
 --------

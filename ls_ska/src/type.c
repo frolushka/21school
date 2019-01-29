@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 06:56:12 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/29 08:44:10 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/29 12:45:27 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@ int		get_type(t_finf const *f)
 		return (-1);
 	return (f->dir->d_type);
 }
-
-// void	set_colors_type(int const t)
-// {
-// 	(t == DT_DIR ? set_colors("\x1b[34m", NULL) : 0);
-// 	(t == DT_LNK ? set_colors("\x1b[35m", NULL) : 0);
-// 	(t == DT_SOCK ? set_colors("\x1b[32m", NULL) : 0);
-// 	(t == DT_FIFO ? set_colors("\x1b[33m", NULL) : 0);
-// }
 
 int		print_type(t_finf const *f)
 {

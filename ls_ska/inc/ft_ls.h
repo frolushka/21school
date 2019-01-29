@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 20:56:59 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/29 11:17:40 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/29 13:01:23 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ int		print_type(t_finf const *f);
 
 int	print_table(t_finf const *f);
 int	print_simple(t_finf const *f);
+
+void	set_colors(char const *fg, char const *bg);
 
 #endif

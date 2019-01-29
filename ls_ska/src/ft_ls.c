@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 20:57:28 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/29 11:46:02 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/29 13:11:52 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,12 @@ static int		print_dir(char const *fn, int flags)
 	while (cur)
 	{
 		dir = ((t_finf *)(cur->content))->dir;
-		if (dir->d_name[0] == '.')
+		if (!(flags & FLAG_mult) && ((dir->d_name[0] == '.' && dir->d_name[1] == '\0') ||
+			(dir->d_name[0] == '.' && dir->d_name[1] == '.'&& dir->d_name[2] == '\0')))
 			(flags & FLAG_a ? print4(dir->d_name, "\t", "", "") : 0);
 		else
-		{
 			(flags & FLAG_l ? print_table((t_finf *)(cur->content)) : print_simple((t_finf *)(cur->content)));
 			// print4(dir->d_name, "\t", "", "");
-		}
 		cur = cur->next;
 	}
 	write(1, "\n", 1);

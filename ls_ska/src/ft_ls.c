@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 20:57:28 by sbednar           #+#    #+#             */
-/*   Updated: 2019/01/29 13:11:52 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/01/30 17:59:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ static t_list	*read_list(char const *fn, const int flags, DIR **d)
 	return (res);
 }
 
-static int		count_blocks(t_list *cur, long bs)
-{
-	int res;
+// static int		count_blocks(t_list *cur, long bs)
+// {
+// 	int res;
 
-	res = 0;
-	while (cur)
-	{
-		res += (int)((t_finf *)(cur->content))->stat->st_size * 512 / bs;
-		cur = cur->next;
-	}
-	return (res);
-}
+// 	res = 0;
+// 	while (cur)
+// 	{
+// 		res += (int)((t_finf *)(cur->content))->stat->st_size * 512 / bs;
+// 		cur = cur->next;
+// 	}
+// 	return (res);
+// }
 
 static int		print_dir(char const *fn, int flags)
 {
@@ -60,7 +60,7 @@ static int		print_dir(char const *fn, int flags)
 	root = read_list(fn, flags, &dirp);
 	if ((flags & FLAG_mult || flags & FLAG_R) && ft_strcmp(fn, ".") != 0)
 		print4(fn, ":\n", "", "");
-	print4("total ", ft_itoa(count_blocks(root, ((t_finf *)(root->content))->stat->st_blksize)), "\n", "");
+	// print4("total ", ft_itoa(count_blocks(root, ((t_finf *)(root->content))->stat->st_blksize)), "\n", "");
 	cur = root;
 	while (cur)
 	{

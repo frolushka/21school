@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dots_fill_cb.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 07:12:44 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/06 10:47:06 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/06 11:15:02 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,17 @@ void			dots_fill_cb(const t_vec4 *p, const t_mtx4 *c, t_vec3 *res)
 	t_vec3	*bv = vec3_new(c->val[3][0] + c->val[0][0], c->val[3][1] + c->val[0][1], c->val[3][2] + c->val[0][2]);
 	t_vec3	*cv = vec3_new(c->val[3][0] + c->val[1][0], c->val[3][1] + c->val[1][1], c->val[3][2] + c->val[1][2]);
 
-	float kx = (bv->y - av->y) * (cv->z - av->z) - (bv->z - av->z) * (cv->x - av->x);
+	float kx = (bv->y - av->y) * (cv->z - av->z) - (bv->z - av->z) * (cv->y - av->y);
 	float ky = (bv->z - av->z) * (cv->x - av->x) - (bv->x - av->x) * (cv->z - av->z);
-	float kz = (bv->y - av->y) * (cv->x - av->x) - (bv->x - av->x) * (cv->z - av->z);
+	float kz = (bv->y - av->y) * (cv->x - av->x) - (bv->x - av->x) * (cv->y - av->y);
 	float d = -av->x * (bv->y - av->y) * (cv->z - av->z) -
 		-av->x * (bv->z - av->z) * (cv->x - av->x) +
 		-av->y * (bv->z - av->z) * (cv->x - av->x) -
 		-av->y * (bv->x - av->x) * (cv->z - av->z) +
 		-av->z * (bv->y - av->y) * (cv->x - av->x) -
-		-av->z * (bv->x - av->x) * (cv->z - av->z);
+		-av->z * (bv->x - av->x) * (cv->y - av->y);
 
 	float l = (kx * p->x + ky * p->y + kz * p->z + d) / -(kx * kx + ky * ky + kz * kz);
-	printf("%f %f %f\n", p->x + l * kx, p->y + l * ky, p->z + l * kz);
 	res->x = p->x + l * kx - av->x;
 	res->y = p->y + l * ky - av->y;
 	res->z = p->z + l * kz - av->z;

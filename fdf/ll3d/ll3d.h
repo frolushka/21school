@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/06 11:47:56 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 10:10:02 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ typedef struct		s_cam
 {
 	t_mtx4			*cam;
 	t_vec3			*piv;
-	float			plane[4];
 	int				mode;
 	float			speed;
 	float			sence;

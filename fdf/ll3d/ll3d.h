@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ll3d.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/09 10:10:02 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 11:59:43 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void				vec2_print(t_vec2 const *v);
 
 t_vec3				*vec3_init(void);
 t_vec3				*vec3_new(float const x, float const y, float const z);
+void				vec3_set(t_vec3 *v, const float x, const float y,
+						const float z);
 t_vec3				*vec3_sum(t_vec3 const *v1, t_vec3 const *v2);
 t_vec3				*vec3_mult(t_vec3 const *v, float const s);
 t_vec3				*vec3_copy(t_vec3 const *v);
@@ -174,6 +176,8 @@ void	dots_fill_sb_per(t_vec3 *point, t_vec2 *res, const t_cam *cam);
 t_dots				*dots_init(int const x, int const y);
 int					dots_print(t_dots *res);
 void				dots_scale_y(t_dots *dots, float const s);
+t_vec4				**dots4_cpy(const t_vec4 **src,
+						const int xc, const int yc);
 
 void				image_clear(t_image *img);
 t_image				*image_init(t_mlx *mlx, int const x, int const y);

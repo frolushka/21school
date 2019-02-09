@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 22:44:24 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/06 04:22:11 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 12:18:10 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ static void	hook_key_1(const int key, t_mouse *mouse)
 		hook_camera_rotate_y(mouse->cam, -1);
 	else if (key == KEY_ARROWR)
 		hook_camera_rotate_y(mouse->cam, 1);
+	else if (key == KEY_X)
+		hook_x(mouse);
+	else if (key == KEY_H)
+		hook_h(mouse);
 }
 
 int			hook_key(const int key, t_mouse *mouse)

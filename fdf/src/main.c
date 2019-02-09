@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:21:58 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/06 04:36:50 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 12:01:20 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int 			main(int argc, char **argv)
 
 	dots->i = 0;
 	mouse = mouse_init(mlx, 0.2f, cam, dots);
+	if ((mouse->xyu = get_xyu(xyu_init(), dots)))
+	{
+		mouse->norm = dots4_cpy((const t_vec4 **)dots->wb, dots->xc, dots->yc);
+	}
 	mouse->error = 1;
 	redraw(mouse->mlx, mouse->dots, mouse->cam);
 

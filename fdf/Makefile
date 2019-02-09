@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
+#    By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/06 16:23:16 by sbednar           #+#    #+#              #
-#    Updated: 2019/02/06 01:41:36 by sbednar          ###   ########.fr        #
+#    Updated: 2019/02/09 12:16:55 by edraugr-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ SRC			= 	main.c \
 				reader_utils.c \
 				mouse_init.c \
 				dots_solve.c \
-				dots_connect.c
+				dots_connect.c \
+				xyu.c \
+				fill_xyu.c \
+				hook_xyu_work.c
 OBJ			=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 INCS		=	-I. -I./ll3d -I./minilibx -I./libft

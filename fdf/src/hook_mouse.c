@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_set_pixel.c                                  :+:      :+:    :+:   */
+/*   hook_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/04 05:37:56 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/09 11:19:10 by sbednar          ###   ########.fr       */
+/*   Created: 2019/02/09 11:30:44 by sbednar           #+#    #+#             */
+/*   Updated: 2019/02/09 11:44:25 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ll3d.h"
+#include "fdf.h"
 
-void	image_set_pixel(t_image *img, int const x, int const y, int const c)
+int	hook_mouse_move(int x, int y, t_mouse *mouse)
 {
-	if (x < -img->x / 2.0f || x > img->x / 2.0f || y < -img->y / 2.0f || y > img->y / 2.0f)
-		return ;
-	((int *)(img->ptr + (int)((x + img->x / 2.0f) + (y + img->y / 2.0f) * img->x) * img->bpp))[0] = c;
+	int		dx;
+	int		dy;
+
+	dx = x - mouse->x;
+	dy = y - mouse->y;
+	if (dx != 0)
+		hook_camera_rotate_y(mouse->cam, dx);
+	if (dy != 0)
+		hook_camera_rotate_x(mouse->cam, dy);
+	mouse->x = x;
+	mouse->y = y;
+	return (0);
 }

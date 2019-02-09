@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 00:10:42 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/06 00:49:35 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 11:10:55 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	hook_camera_change_sence(t_cam *cam, float const a)
 
 void	hook_camera_change_focus(t_cam *cam, float const a)
 {
-	if (cam->mode == CAM_ISO)
-		return ;
 	cam->focus += a * CAM_FO;
 	(cam->focus > 100 ? cam->focus = 100 : 0);
 	(cam->focus < 0.1f ? cam->focus = 0.1f : 0);

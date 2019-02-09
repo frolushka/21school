@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 23:19:43 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/06 11:48:40 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 11:10:30 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	dots_solve(t_dots *dots, const t_cam *cam)
 	{
 		dots_fill_cb(dots->wb[i], cam->cam, dots->cb[i]);
 		if (cam->mode == CAM_ISO)
-			dots_fill_sb_iso(dots->cb[i], dots->sb[i]);
+			dots_fill_sb_iso(dots->cb[i], cam->focus, dots->sb[i]);
 		else
 			dots_fill_sb_per(dots->cb[i], dots->sb[i], cam);
 	}

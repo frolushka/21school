@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 01:22:04 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/06 06:18:37 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 11:28:02 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		camera_rotate_custom(t_cam *cam, t_vec3 const *p, t_vec3 *axis, float cons
 	tmp->val[3][2] -= p->z;
 	if (!(mr = mtx4_get_rotation(axis->x, axis->y, axis->z, a * cam->sence)))
 		return ;
-	mtx4_print(mr);
+	// mtx4_print(mr);
 	mtx4x4_mult(tmp, mr, cam->cam);
 	cam->cam->val[3][0] += p->x;
 	cam->cam->val[3][1] += p->y;

@@ -6,13 +6,13 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 12:24:05 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/06 00:51:12 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 11:37:53 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_mouse	*mouse_init(t_mlx *mlx, const float sence, t_cam *cam, t_dots *dots)
+t_mouse	*mouse_init(t_mlx *mlx, t_cam *cam, t_dots *dots)
 {
 	t_mouse	*res;
 
@@ -20,10 +20,6 @@ t_mouse	*mouse_init(t_mlx *mlx, const float sence, t_cam *cam, t_dots *dots)
 		return (NULL);
 	res->x = 0;
 	res->y = 0;
-	res->prev_x = 0;
-	res->prev_y = 0;
-	res->sence = sence;
-	res->error = 0;
 	res->cam = cam;
 	res->dots = dots;
 	res->mlx = mlx;

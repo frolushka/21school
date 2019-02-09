@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/06 16:23:16 by sbednar           #+#    #+#              #
-#    Updated: 2019/02/06 01:41:36 by sbednar          ###   ########.fr        #
+#    Updated: 2019/02/09 12:03:20 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,8 @@ clean:
 	rm -rf $(OBJ_DIR)
 	@echo "\033[92m\033[1m---> CLEAN DONE\033[0m\033[0m"
 
-fclean: clean
+fclean:
+	rm -rf $(OBJ_DIR)
 	@echo "\033[91m\033[1m[1/4] \033[97m\033[1mll3d full clean:\033[0m"
 	@$(MAKE) -C $(LL3D_DIR) fclean
 	@echo "\033[91m\033[1m[2/4] \033[97m\033[1mmlx full clean:\033[0m"

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_set_pixel.c                                  :+:      :+:    :+:   */
+/*   color_lerp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/04 05:37:56 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/11 22:22:57 by sbednar          ###   ########.fr       */
+/*   Created: 2019/02/11 19:42:55 by sbednar           #+#    #+#             */
+/*   Updated: 2019/02/11 19:43:01 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ll3d.h"
 
-void	image_set_pixel(t_image *img, int const x, int const y, int const c)
+int 		color_lerp(int c1, int c2, float step)
 {
-	int	p;
-	int	*im;
+	int	r;
+	int	g;
+	int	b;
 
-	if (x <= -img->x / 2.0f || x >= img->x / 2.0f || y <= -img->y / 2.0f || y >= img->y / 2.0f)
-		return ;
-	p = (int)((x + img->x / 2.0f) + (y + img->y / 2.0f) * img->x) * img->bpp;
-	im = (int *)(img->ptr + p);
-	if (*im < c)
-		*im = c;
+	r = (((c2 & 0xFF0000) >> 16) - ((c1 & 0xFF0000) >> 16)) * step +
+		((c1 & 0xFF0000) >> 16);
+	g = (((c2 & 0xFF00) >> 8) - ((c1 & 0xFF00) >> 8)) * step +
+		((c1 & 0xFF00) >> 8);
+	b = ((c2 & 0xFF) - (c1 & 0xFF)) * step +
+		(c1 & 0xFF);
+	return (r << 16 | g << 8 | b);
 }

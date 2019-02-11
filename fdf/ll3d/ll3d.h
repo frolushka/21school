@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/11 16:33:34 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/11 23:00:33 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,9 +180,11 @@ void				image_clear(t_image *img);
 t_image				*image_init(t_mlx *mlx, int const x, int const y);
 void				image_set_pixel(t_image *img, int const x, int const y,
 					int const c);
-void				image_draw_line(t_mlx const *mlx, t_vec2 const *v1,
+int				image_draw_line(t_mlx const *mlx, t_vec2 const *v1,
 					t_vec2 const *v2, t_vec2 const *c);
 
 t_mlx				*mlx_init_ll3d(int width, int height, char *header);
+
+int 		color_lerp(int c1, int c2, float step);
 
 #endif

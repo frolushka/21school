@@ -6,7 +6,7 @@
 /*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/11 18:47:00 by edraugr-         ###   ########.fr       */
+/*   Updated: 2019/02/11 22:30:56 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,10 @@ int					ft_abs(int const x);
 int					ft_sign(float const a);
 float				ft_fabs(float const x);
 void				ft_swap(int *a, int *b);
+float				ft_fmin(const float a, const float b);
+int					ft_min(const int a, const int b);
+float				ft_fmax(const float a, const float b);
+int					ft_max(const int a, const int b);
 /*
 ** MTX4
 */

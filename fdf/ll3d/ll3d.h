@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ll3d.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/11 16:33:34 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/11 18:47:00 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ t_vec2				*vec2_sum(t_vec2 const *v1, t_vec2 const *v2);
 t_vec2				*vec2_mult(t_vec2 const *v, int const s);
 t_vec2				*vec2_copy(t_vec2 const *v);
 void				vec2_print(t_vec2 const *v);
+void				vec2_set(t_vec2 *v, const int x, const int y);
 
 /*
 ** T_VEC3

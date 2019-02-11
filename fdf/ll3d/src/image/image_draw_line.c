@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_draw_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 07:50:40 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/11 18:30:22 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/11 18:49:44 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 static int 		color_lerp(int c1, int c2, float step)
 {
-	int	r;
-
 	int	res;
 
 	res = 0;

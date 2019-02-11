@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/11 23:00:33 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/11 23:24:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ t_vec2				*vec2_sum(t_vec2 const *v1, t_vec2 const *v2);
 t_vec2				*vec2_mult(t_vec2 const *v, int const s);
 t_vec2				*vec2_copy(t_vec2 const *v);
 void				vec2_print(t_vec2 const *v);
+void				vec2_set(t_vec2 *v, const int x, const int y);
 
 /*
 ** T_VEC3
@@ -145,6 +146,10 @@ int					ft_abs(int const x);
 int					ft_sign(float const a);
 float				ft_fabs(float const x);
 void				ft_swap(int *a, int *b);
+float				ft_fmin(const float a, const float b);
+int					ft_min(const int a, const int b);
+float				ft_fmax(const float a, const float b);
+int					ft_max(const int a, const int b);
 /*
 ** MTX4
 */

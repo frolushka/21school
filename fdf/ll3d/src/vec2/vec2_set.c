@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dots_fill_sb_per.c                                 :+:      :+:    :+:   */
+/*   vec2_set.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/04 09:29:15 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/11 21:53:53 by edraugr-         ###   ########.fr       */
+/*   Created: 2019/02/11 18:45:07 by edraugr-          #+#    #+#             */
+/*   Updated: 2019/02/11 18:46:36 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ll3d.h"
 
-void	dots_fill_sb_per(t_vec3 *point, t_vec2 *res, const t_cam *cam)
+void	vec2_set(t_vec2 *v, const int x, const int y)
 {
-	float	a;
-	float	b;
-
-	a = cam->focus;
-	b = a + point->z;
-	if (fabs(b) < 0.001f)
-		b = 2.0f;
-	res->x = a / b * point->x * cam->focus;
-	res->y = a / b * point->y * cam->focus;
+	v->x = x;
+	v->y = y;
 }

@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/31 20:35:25 by sbednar           #+#    #+#              #
-#    Updated: 2019/02/11 19:43:36 by sbednar          ###   ########.fr        #
+#    Updated: 2019/02/11 23:25:21 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,9 @@ SRC			=	vec2_init.c \
 				image_set_pixel.c \
 				image_draw_line.c \
 				mlx_init_ll3d.c \
-				color_lerp.c
+				color_lerp.c \
+				vec2_set.c \
+				ft_min_max.c
 
 OBJ			=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 INC			=	-I. -I../libft -I../minilibx

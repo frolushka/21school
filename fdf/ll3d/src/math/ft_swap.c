@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dots_fill_sb_iso.c                                 :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/04 07:42:56 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/11 16:01:07 by sbednar          ###   ########.fr       */
+/*   Created: 2019/02/11 16:32:27 by sbednar           #+#    #+#             */
+/*   Updated: 2019/02/11 16:33:18 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ll3d.h"
 
-void	dots_fill_sb_iso(const t_vec3 *p, t_vec2 *res, const float f)
+void	ft_swap(int *a, int *b)
 {
-	res->x = (int)(p->x * f);
-	res->y = (int)(p->y * f);
+	int	t;
+
+	t = *a;
+	*a = *b;
+	*b = t;
 }

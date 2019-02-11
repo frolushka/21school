@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/09 12:06:33 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/11 16:33:34 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct		s_cam
 	t_vec3			*piv;
 	int				mode;
 	float			speed;
+	float			ppu;
 	float			sence;
 	float			focus;
 	struct s_cam	*add;
@@ -143,6 +144,7 @@ void				vec4_print(t_vec4 const *v);
 int					ft_abs(int const x);
 int					ft_sign(float const a);
 float				ft_fabs(float const x);
+void				ft_swap(int *a, int *b);
 /*
 ** MTX4
 */
@@ -168,7 +170,7 @@ void	camera_rotate_custom(t_cam *cam, t_vec3 const *p, t_vec3 *axis, float const
 
 void				dots_fill_cb(const t_vec4 *p, const t_mtx4 *c,
 					t_vec3 *res);
-void	dots_fill_sb_iso(const t_vec3 *p, const float f, t_vec2 *res);
+void	dots_fill_sb_iso(const t_vec3 *p, t_vec2 *res, const float f);
 void	dots_fill_sb_per(t_vec3 *point, t_vec2 *res, const t_cam *cam);
 t_dots				*dots_init(int const x, int const y);
 int					dots_print(t_dots *res);

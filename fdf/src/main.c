@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:21:58 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/09 11:45:49 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/11 16:05:38 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int 			main(int argc, char **argv)
 	cam->focus = 25;
 	cam->piv = vec3_new(0, (dots->zmax + dots->zmin) / 2.0f, 0);
 	cam->add = camera_default();
+	cam->add->focus = (SCREEN_X / 2.0f / 25) / tanf(M_PI / 6);
 	cam->add->mode = CAM_PER;
 	cam->add->add = cam;
 

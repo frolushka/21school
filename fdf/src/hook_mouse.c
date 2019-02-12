@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_init.c                                       :+:      :+:    :+:   */
+/*   hook_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 12:24:05 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/09 11:37:53 by sbednar          ###   ########.fr       */
+/*   Created: 2019/02/09 11:30:44 by sbednar           #+#    #+#             */
+/*   Updated: 2019/02/09 11:44:25 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_mouse	*mouse_init(t_mlx *mlx, t_cam *cam, t_dots *dots)
+int	hook_mouse_move(int x, int y, t_mouse *mouse)
 {
-	t_mouse	*res;
+	int		dx;
+	int		dy;
 
-	if (!(res = (t_mouse *)malloc(sizeof(t_mouse))))
-		return (NULL);
-	res->x = 0;
-	res->y = 0;
-	res->cam = cam;
-	res->dots = dots;
-	res->mlx = mlx;
-	return (res);
+	dx = x - mouse->x;
+	dy = y - mouse->y;
+	if (dx != 0)
+		hook_camera_rotate_y(mouse->cam, dx);
+	if (dy != 0)
+		hook_camera_rotate_x(mouse->cam, dy);
+	mouse->x = x;
+	mouse->y = y;
+	return (0);
 }

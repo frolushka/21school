@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 12:17:26 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/06 04:26:55 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/06 11:46:49 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static void put_dots_info(const t_mlx *mlx, t_dots const *dots)
 	mlx_string_put(mlx->mlx, mlx->win, 1500, 310, 0xFFFFFF, a);
 	sprintf(a, "%-8d %-8d", dots->sb[dots->i]->x, dots->sb[dots->i]->y);
 	mlx_string_put(mlx->mlx, mlx->win, 1500, 330, 0xFFFFFF, a);
-
 }
 
 static void	check(const t_cam *cam)

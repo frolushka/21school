@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_init.c                                       :+:      :+:    :+:   */
+/*   color_lerp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 12:24:05 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/09 11:37:53 by sbednar          ###   ########.fr       */
+/*   Created: 2019/02/11 19:42:55 by sbednar           #+#    #+#             */
+/*   Updated: 2019/02/11 19:43:01 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "ll3d.h"
 
-t_mouse	*mouse_init(t_mlx *mlx, t_cam *cam, t_dots *dots)
+int 		color_lerp(int c1, int c2, float step)
 {
-	t_mouse	*res;
+	int	r;
+	int	g;
+	int	b;
 
-	if (!(res = (t_mouse *)malloc(sizeof(t_mouse))))
-		return (NULL);
-	res->x = 0;
-	res->y = 0;
-	res->cam = cam;
-	res->dots = dots;
-	res->mlx = mlx;
-	return (res);
+	r = (((c2 & 0xFF0000) >> 16) - ((c1 & 0xFF0000) >> 16)) * step +
+		((c1 & 0xFF0000) >> 16);
+	g = (((c2 & 0xFF00) >> 8) - ((c1 & 0xFF00) >> 8)) * step +
+		((c1 & 0xFF00) >> 8);
+	b = ((c2 & 0xFF) - (c1 & 0xFF)) * step +
+		(c1 & 0xFF);
+	return (r << 16 | g << 8 | b);
 }

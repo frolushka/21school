@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/06 06:02:46 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/11 23:24:51 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 
 # define SCREEN_X	1920
 # define SCREEN_Y	1080
-# define UNIT		50
 
 typedef struct		s_vec2
 {
@@ -86,6 +85,7 @@ typedef struct		s_cam
 	t_vec3			*piv;
 	int				mode;
 	float			speed;
+	float			ppu;
 	float			sence;
 	float			focus;
 	struct s_cam	*add;
@@ -113,6 +113,7 @@ t_vec2				*vec2_sum(t_vec2 const *v1, t_vec2 const *v2);
 t_vec2				*vec2_mult(t_vec2 const *v, int const s);
 t_vec2				*vec2_copy(t_vec2 const *v);
 void				vec2_print(t_vec2 const *v);
+void				vec2_set(t_vec2 *v, const int x, const int y);
 
 /*
 ** T_VEC3
@@ -144,6 +145,11 @@ void				vec4_print(t_vec4 const *v);
 int					ft_abs(int const x);
 int					ft_sign(float const a);
 float				ft_fabs(float const x);
+void				ft_swap(int *a, int *b);
+float				ft_fmin(const float a, const float b);
+int					ft_min(const int a, const int b);
+float				ft_fmax(const float a, const float b);
+int					ft_max(const int a, const int b);
 /*
 ** MTX4
 */
@@ -169,7 +175,7 @@ void	camera_rotate_custom(t_cam *cam, t_vec3 const *p, t_vec3 *axis, float const
 
 void				dots_fill_cb(const t_vec4 *p, const t_mtx4 *c,
 					t_vec3 *res);
-void				dots_fill_sb_iso(const t_vec3 *p, t_vec2 *res);
+void	dots_fill_sb_iso(const t_vec3 *p, t_vec2 *res, const float f);
 void	dots_fill_sb_per(t_vec3 *point, t_vec2 *res, const t_cam *cam);
 t_dots				*dots_init(int const x, int const y);
 int					dots_print(t_dots *res);
@@ -179,9 +185,11 @@ void				image_clear(t_image *img);
 t_image				*image_init(t_mlx *mlx, int const x, int const y);
 void				image_set_pixel(t_image *img, int const x, int const y,
 					int const c);
-void				image_draw_line(t_mlx const *mlx, t_vec2 const *v1,
+int				image_draw_line(t_mlx const *mlx, t_vec2 const *v1,
 					t_vec2 const *v2, t_vec2 const *c);
 
 t_mlx				*mlx_init_ll3d(int width, int height, char *header);
+
+int 		color_lerp(int c1, int c2, float step);
 
 #endif

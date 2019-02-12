@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:21:58 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/06 04:36:50 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/11 18:57:14 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,19 @@ int 			main(int argc, char **argv)
 
 	// default position for cameras is same
 	cam = camera_default();
+	cam->focus = 25;
 	cam->piv = vec3_new(0, (dots->zmax + dots->zmin) / 2.0f, 0);
 	cam->add = camera_default();
+	cam->add->focus = (SCREEN_X / 2.0f / 25) / tanf(M_PI / 6);
 	cam->add->mode = CAM_PER;
 	cam->add->add = cam;
 
 	dots->i = 0;
-	mouse = mouse_init(mlx, 0.2f, cam, dots);
-	mouse->error = 1;
+	mouse = mouse_init(mlx, cam, dots);
 	redraw(mouse->mlx, mouse->dots, mouse->cam);
 
 	//mlx_hook(mlx->win, 4, 0, hook_wheel, mouse);
+	// mlx_hook(mlx->win, 6, 0, hook_mouse_move, mouse);
 	mlx_hook(mlx->win, 2, 0, hook_key, mouse);
 	mlx_loop(mlx->mlx);
 	return (0);

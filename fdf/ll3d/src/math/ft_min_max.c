@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dots_fill_sb_per.c                                 :+:      :+:    :+:   */
+/*   ft_min_max.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/04 09:29:15 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/11 21:53:53 by edraugr-         ###   ########.fr       */
+/*   Created: 2019/02/11 22:24:33 by edraugr-          #+#    #+#             */
+/*   Updated: 2019/02/11 22:31:08 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ll3d.h"
 
-void	dots_fill_sb_per(t_vec3 *point, t_vec2 *res, const t_cam *cam)
+float	ft_fmin(const float a, const float b)
 {
-	float	a;
-	float	b;
+	return (a > b ? b : a);
+}
 
-	a = cam->focus;
-	b = a + point->z;
-	if (fabs(b) < 0.001f)
-		b = 2.0f;
-	res->x = a / b * point->x * cam->focus;
-	res->y = a / b * point->y * cam->focus;
+int		ft_min(const int a, const int b)
+{
+	return (a > b ? b : a);
+}
+
+float	ft_fmax(const float a, const float b)
+{
+	return (a < b ? b : a);
+}
+
+int		ft_max(const int a, const int b)
+{
+	return (a < b ? b : a);
 }

@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 07:57:07 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/06 04:22:20 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/09 11:38:09 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,9 @@ typedef struct		s_mouse
 {
 	int				x;
 	int				y;
-	int				prev_x;
-	int				prev_y;
-	int				error;
-	float			sence;
+	t_mlx			*mlx;
 	t_cam			*cam;
 	t_dots			*dots;
-	t_mlx			*mlx;
 }					t_mouse;
 
 int			read_dots(char *fn, t_dots **res);
@@ -80,7 +76,7 @@ int			get_color(char const *it);
 int			free_all(char **line, char ***tmp, int fd);
 
 int	hook_rot_debug(int key, t_mouse *mouse);
-t_mouse	*mouse_init(t_mlx *mlx, const float sence, t_cam *cam, t_dots *dots);
+t_mouse	*mouse_init(t_mlx *mlx, t_cam *cam, t_dots *dots);
 
 void	hook_camera_move_x(t_cam *cam, float const a);
 void	hook_camera_move_y(t_cam *cam, float const a);

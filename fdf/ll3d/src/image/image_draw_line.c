@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 07:50:40 by sbednar           #+#    #+#             */
-/*   Updated: 2019/02/12 01:52:42 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/12 17:44:09 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ int			image_draw_line(t_mlx const *mlx, t_vec2 const *v1,
 	// ПОПЫТКА 3
 
 	unsigned short dt[6];
-	ft_bzero(&dt, 6 * sizeof(ushort));
+	ft_bzero(&dt, 6 * sizeof(short));
 	int	t[18];
 	ft_bzero(&t, 18 * 4);
 	t[10] = v1->x; // 10

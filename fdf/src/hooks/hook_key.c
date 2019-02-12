@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 22:44:24 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/06 04:22:11 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/12 17:47:34 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,58 +19,67 @@ static int	hook_esc(void)
 	return (0);
 }
 
-static void	hook_key_1(const int key, t_mouse *mouse)
+static void inline	hook_key_change(const int key, t_mouse *mouse)
 {
 	if (key == KEY_1)
 		hook_camera_change_speed(mouse->cam, -1);
 	else if (key == KEY_4)
 		hook_camera_change_speed(mouse->cam, 1);
-	else if (key == KEY_2)
+	if (key == KEY_2)
 		hook_camera_change_sence(mouse->cam, -1);
 	else if (key == KEY_5)
 		hook_camera_change_sence(mouse->cam, 1);
-	else if (key == KEY_3)
+	if (key == KEY_3)
 		hook_camera_change_focus(mouse->cam, -1);
 	else if (key == KEY_6)
 		hook_camera_change_focus(mouse->cam, 1);
-	else if (key == KEY_ARROWU)
+}
+
+static void inline	hook_key_rotate(const int key, t_mouse *mouse)
+{
+	if (key == KEY_ARROWU)
 		hook_camera_rotate_x(mouse->cam, 1);
 	else if (key == KEY_ARROWD)
 		hook_camera_rotate_x(mouse->cam, -1);
-	else if (key == KEY_ARROWL)
+	if (key == KEY_ARROWL)
 		hook_camera_rotate_y(mouse->cam, -1);
 	else if (key == KEY_ARROWR)
 		hook_camera_rotate_y(mouse->cam, 1);
 }
 
-int			hook_key(const int key, t_mouse *mouse)
+static void inline	hook_key_move(const int key, t_mouse *mouse)
 {
-	if (key == KEY_ESC)
-		hook_esc();
-	else if (key == KEY_W)
+	if (key == KEY_W)
 		hook_camera_move_z(mouse->cam, 1);
 	else if (key == KEY_S)
 		hook_camera_move_z(mouse->cam, -1);
-	else if (key == KEY_D)
+	if (key == KEY_D)
 		hook_camera_move_x(mouse->cam, 1);
 	else if (key == KEY_A)
 		hook_camera_move_x(mouse->cam, -1);
-	else if (key == KEY_E)
+	if (key == KEY_E)
 		hook_camera_move_y(mouse->cam, 1);
 	else if (key == KEY_Q)
 		hook_camera_move_y(mouse->cam, -1);
-	else if (key == KEY_F)
+}
+
+int			hook_key(const int key, t_mouse *mouse)
+{
+	hook_key_move(key, mouse);
+	hook_key_rotate(key, mouse);
+	hook_key_change(key, mouse);
+	if (key == KEY_ESC)
+		hook_esc();
+	if (key == KEY_F)
 		mouse->cam = mouse->cam->add;
-	else if (key == KEY_8)
+	if (key == KEY_8)
 		mouse->dots->i = (mouse->dots->i + 1) % (mouse->dots->xc * mouse->dots->yc);
-	else if (key == KEY_7)
+	if (key == KEY_7)
 		mouse->dots->i = (mouse->dots->i + (mouse->dots->xc * mouse->dots->yc) - 1) % (mouse->dots->xc * mouse->dots->yc);
-	else if (key == KEY_R)
+	if (key == KEY_R)
 		dots_scale_y(mouse->dots, -1.1f);
-	else if (key == KEY_T)
+	if (key == KEY_T)
 		dots_scale_y(mouse->dots, 1.1f);
-	else
-		hook_key_1(key, mouse);
 	redraw(mouse->mlx, mouse->dots, mouse->cam);
 	return (0);
 }

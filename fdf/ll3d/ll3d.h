@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ll3d.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 14:56:09 by edraugr-          #+#    #+#             */
-/*   Updated: 2019/02/11 23:24:51 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/02/12 17:41:20 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define CAM_SE		1
 # define CAM_FO		0.1f
 
-# define SCREEN_X	1920
-# define SCREEN_Y	1080
+# define SCREEN_X	1200
+# define SCREEN_Y	1000
 
 typedef struct		s_vec2
 {
@@ -172,6 +172,7 @@ void				camera_move_z(t_cam *cam, float const a);
 void				camera_rotate_x(t_cam *cam, float const a);
 void				camera_rotate_y(t_cam *cam, float const a);
 void	camera_rotate_custom(t_cam *cam, t_vec3 const *p, t_vec3 *axis, float const a);
+void	camera_per_calc_piv(t_cam *cam);
 
 void				dots_fill_cb(const t_vec4 *p, const t_mtx4 *c,
 					t_vec3 *res);

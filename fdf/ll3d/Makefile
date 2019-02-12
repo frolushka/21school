@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
+#    By: sbednar <sbednar@student.fr.42>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/31 20:35:25 by sbednar           #+#    #+#              #
-#    Updated: 2019/02/11 23:25:21 by sbednar          ###   ########.fr        #
+#    Updated: 2019/02/12 17:41:32 by sbednar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC			=	vec2_init.c \
 				camera_rotate_x.c \
 				camera_rotate_y.c \
 				camera_rotate_custom.c \
+				camera_per_calc_piv.c \
 				dots_fill_cb.c \
 				dots_fill_sb_iso.c \
 				dots_fill_sb_per.c \

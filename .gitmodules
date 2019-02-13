@@ -16,3 +16,6 @@
 [submodule "piscine_reloaded"]
 	path = piscine_reloaded
 	url = https://github.com/frolushka/piscine_reloaded.git
+[submodule "fdf"]
+	path = fdf
+	url = https://github.com/frolushka/fdf.git

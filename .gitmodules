@@ -19,3 +19,6 @@
 [submodule "fdf"]
 	path = fdf
 	url = https://github.com/frolushka/fdf.git
+[submodule "printf"]
+	path = printf
+	url = https://github.com/frolushka/printf.git

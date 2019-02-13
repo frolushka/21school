@@ -1,3 +1,6 @@
 [submodule "42commandements"]
 	path = 42commandements
 	url = https://github.com/frolushka/42commandements
+[submodule "libft"]
+	path = libft
+	url = https://github.com/frolushka/libft.git

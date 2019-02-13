@@ -13,3 +13,6 @@
 [submodule "init"]
 	path = init
 	url = https://github.com/frolushka/init.git
+[submodule "piscine_reloaded"]
+	path = piscine_reloaded
+	url = https://github.com/frolushka/piscine_reloaded.git

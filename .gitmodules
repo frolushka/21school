@@ -22,3 +22,6 @@
 [submodule "printf"]
 	path = printf
 	url = https://github.com/frolushka/printf.git
+[submodule "ls"]
+	path = ls
+	url = https://github.com/frolushka/ls.git

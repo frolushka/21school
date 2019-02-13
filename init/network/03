@@ -1,2 +1,0 @@
-Identify the MAC address of the Wi-Fi card
-ifconfig en0 | grep "ether " | awk '{print $NF}'

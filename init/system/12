@@ -1,2 +1,0 @@
-# Figure out the exact size of each folder of /var in a humanly understandable way followed by the path of it.
-sudo du -h /var

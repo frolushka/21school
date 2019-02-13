@@ -1,2 +1,0 @@
-# List all services which are started at boot time and name this kind of services
-sudo service --status-all

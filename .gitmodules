@@ -10,3 +10,6 @@
 [submodule "fillit"]
 	path = fillit
 	url = https://github.com/frolushka/fillit.git
+[submodule "init"]
+	path = init
+	url = https://github.com/frolushka/init.git

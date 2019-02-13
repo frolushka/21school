@@ -1,2 +1,0 @@
-# Figure out the PID of the SSHD service.
-sudo service sshd status | grep "Main PID"

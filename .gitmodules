@@ -25,3 +25,6 @@
 [submodule "ls"]
 	path = ls
 	url = https://github.com/frolushka/ls.git
+[submodule "fractol"]
+	path = fractol
+	url = https://github.com/frolushka/fractol.git

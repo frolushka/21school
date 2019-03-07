@@ -30,4 +30,4 @@
 	url = https://github.com/frolushka/fractol.git
 [submodule "guimp"]
 	path = guimp
-	url = https://github.com/frolushka/guimp
+	url = https://github.com/frolushka/guimp.git
